@@ -1,0 +1,9 @@
+services:
+  website:
+    build:
+      context: .
+    platform: linux/amd64
+    container_name: website-060928
+    image: vishwanetwork/website-060928:latest
+    ports:
+      - "8090:80"
