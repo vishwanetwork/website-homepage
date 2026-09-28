@@ -65,8 +65,10 @@ export default function App() {
         <Security onDialog={setDialog} />
         <Insights onDialog={setDialog} />
         <Faq />
-        <FinalCta onDialog={setDialog} />
-        <Footer />
+        <div className="closing-block">
+          <FinalCta onDialog={setDialog} />
+          <Footer />
+        </div>
       </main>
       {dialog && <Dialog id={dialog} onClose={() => setDialog(null)} onCopy={copyText} />}
       <div id="toast" className={toast ? 'show' : ''} role="status" aria-live="polite">{toast}</div>

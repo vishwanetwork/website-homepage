@@ -131,6 +131,11 @@ section[id],div[id]{scroll-margin-top:20px}
 .final-cta .edge-art.right{right:0}
 
 /* Footer dot texture denser (closer to the image above), no border, logo no radius */
-.vw-footer{background-size:16px 16px;border-top:0}
+.vw-footer{border-top:0}
 .vw-footer__brand img{border-radius:0}
 @media(max-width:760px){.final-cta-inner{padding:0 20px}}
+
+/* Closing block: one shared background so FinalCta and Footer align seamlessly */
+.closing-block{background-color:#00140f}
+.closing-block .final-cta{background:transparent}
+.closing-block .vw-footer{background:none}
