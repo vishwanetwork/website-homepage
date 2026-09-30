@@ -1,6 +1,6 @@
 import React from 'react';
 import Icon from './Icon.jsx';
-import { TYPEFORM_URL } from '../config.js';
+import { DEMO_URL } from '../config.js';
 
 const specify = [
   ['user', 'IDENTITY'], ['bank', 'AUTHORITY'], ['file', 'PROVENANCE'],
@@ -72,7 +72,7 @@ export default function Gate() {
               <h3>ENFORCEMENT CONTROLS</h3>
               {controls.map(([i, l]) => (<div key={l}><Icon name={i} /><span>{l}</span><b>✓</b></div>))}
             </div>
-            <a className="button dark" href={TYPEFORM_URL} target="_blank" rel="noopener noreferrer">Request a demo <span aria-hidden="true">→</span></a>
+            <a className="button dark" href={DEMO_URL} target="_blank" rel="noopener noreferrer">Request a demo <span aria-hidden="true">→</span></a>
           </div>
         </div>
         <div className="gate-footer dark-panel">

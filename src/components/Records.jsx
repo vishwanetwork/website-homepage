@@ -1,6 +1,6 @@
 import React from 'react';
 import Icon from './Icon.jsx';
-import { TYPEFORM_URL } from '../config.js';
+import { DEMO_URL } from '../config.js';
 
 const trail = [
   ['file', 'INTENT', '2025-04-23 14:01:12', [['source', 'agent_input'], ['intent', 'treasury_swap'], ['scope', 'institutional']]],
@@ -72,8 +72,7 @@ export default function Records({ onCopy }) {
             ))}
           </div>
           <div className="actions">
-            <a className="button dark" href={TYPEFORM_URL} target="_blank" rel="noopener noreferrer">Request a demo <span aria-hidden="true">→</span></a>
-            <a className="button" href="#runtime">Explore the Runtime <span aria-hidden="true">→</span></a>
+            <a className="button dark" href={DEMO_URL} target="_blank" rel="noopener noreferrer">Request a demo <span aria-hidden="true">→</span></a>
           </div>
           <p className="bottom-note">No black-box execution. Every outcome has a decision record.</p>
         </div>

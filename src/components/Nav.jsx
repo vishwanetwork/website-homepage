@@ -41,8 +41,7 @@ export default function Nav({ onDialog }) {
   return (
     <header className="nav wrap">
       <a className="brand" href="#home" aria-label="Vishwa home" onClick={close}>
-        <img className="brand-logo" src="/assets/icons/logo.png" alt="" aria-hidden="true" />
-        vishwa
+        <img className="brand-logo" src="/assets/icons/logo-vishwa.png" alt="Vishwa" />
       </a>
       <nav aria-label="Main navigation" id="main-nav" className={open ? 'open' : ''}>
         {links.map((link, i) => {

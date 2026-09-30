@@ -1,31 +1,18 @@
 import React from 'react';
 
-const TYPEFORM = 'https://form.typeform.com/to/IjCOn4nY';
-
 const columns = [
   {
     label: 'PRODUCT',
     links: [
-      ['AI Treasury', 'https://cli.vishwalab.com', true],
       ['AI Payments', 'https://cli.vishwalab.com', true],
       ['AI Vault', 'https://vault.vishwalab.com', false],
-      ['AI Credit', TYPEFORM, true],
     ],
   },
   {
     label: 'RESOURCES',
     links: [
-      ['Docs', 'https://docs.vishwanetwork.xyz/', true],
-      ['Blog', 'https://vishwalab.com/blog', false],
-      ['Podcast', 'https://vishwalab.com/podcast', false],
-    ],
-  },
-  {
-    label: 'COMPANY',
-    links: [
-      ['About', 'https://vishwalab.com/terms-of-service', false],
-      ['Contact', TYPEFORM, true],
-      ['Careers', TYPEFORM, true],
+      ['Blog', 'https://vishwalab.com/blog', true],
+      ['Podcast', 'https://vishwalab.com/podcast', true],
     ],
   },
 ];
@@ -35,9 +22,9 @@ export default function Footer() {
     <footer className="vw-footer">
       <div className="vw-footer__inner">
         <div className="vw-footer__brand">
-          <img src="/assets/icons/logo.png" alt="Vishwa" />
+          <img src="/assets/icons/logo-vishwa.png" alt="Vishwa" />
           <p className="vw-footer__tagline">
-            Banking infrastructure for autonomous capital. Control enforced before execution.
+            One governed runtime across capital and compute. Vishwa turns agent intent into policy-enforced execution.
           </p>
         </div>
 
@@ -64,8 +51,8 @@ export default function Footer() {
         </p>
 
         <div className="vw-footer__bottom">
-          <span>VISHWA - BANKING INFRASTRUCTURE FOR AUTONOMOUS CAPITAL</span>
-          <span>© 2026 · VISHWA LTD. · CAYMAN ISLANDS</span>
+          <span>Financial infrastructure for autonomous agents.</span>
+          <span>© 2026 · VISHWA LTD.</span>
         </div>
       </div>
     </footer>

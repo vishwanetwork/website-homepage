@@ -1,6 +1,5 @@
 import React from 'react';
 import Icon from './Icon.jsx';
-import { TYPEFORM_URL } from '../config.js';
 
 const requestExamples = {
   financial: {
@@ -110,10 +109,6 @@ export default function Developers({ onCopy, onDialog }) {
               <img src={`/assets/images/${img}.webp`} alt="" loading="lazy" decoding="async" />
             </article>
           ))}
-        </div>
-        <div className="actions">
-          <a className="button dark" href={TYPEFORM_URL} target="_blank" rel="noopener noreferrer">Request a demo <span aria-hidden="true">→</span></a>
-          <button className="button" onClick={() => onDialog && onDialog('docs')}>Read the Docs <span aria-hidden="true">→</span></button>
         </div>
         <div className="divider-label developer-caption">Agent-native by design. Designed for institutional workflows.</div>
       </div>

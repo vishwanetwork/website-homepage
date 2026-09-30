@@ -35,7 +35,7 @@ export default function Improvement() {
           <div>
             <div className="section-heading align-left">
               <span className="eyebrow">PART 05 / POLICY-BOUND IMPROVEMENT</span>
-              <h2>Each run <em>informs the next—within policy.</em></h2>
+              <h2>Each run <em>improve the next—within policy.</em></h2>
               <p className="subtitle">Signals from approved runs enter an evaluation process.<br />Only validated and authorized improvements are applied to<br />routing, orchestration, or provider selection.</p>
             </div>
             <div className="signal-grid">

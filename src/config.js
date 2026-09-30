@@ -4,6 +4,9 @@ export const CONTACT_EMAIL = 'official@vishwalab.com';
 // "Talk to us" form URL
 export const TYPEFORM_URL = 'https://form.typeform.com/to/IjCOn4nY';
 
+// "Request a demo" form URL
+export const DEMO_URL = 'https://form.typeform.com/to/pAGm9NE2';
+
 // Build a mailto link, optionally with a subject
 export function mailto(subject) {
   return subject

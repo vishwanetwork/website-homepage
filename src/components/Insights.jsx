@@ -7,10 +7,8 @@ const stories = [
 ];
 
 const articles = [
-  ['insight-0', 'podcast.webp', 'PODCAST', ['What autonomous', 'capital requires.']],
-  ['insight-1', 'article-document.webp', 'BLOG', ['Why enforcement', 'belongs before execution.']],
-  ['insight-2', 'workflow-screen.svg', 'WORKFLOW', ['From approval queues', 'to governed workflows.']],
-  ['insight-3', 'research-screen.svg', 'RESEARCH', ['The control plane', 'for financial agents.']],
+  ['https://vishwalab.com/podcast', 'podcast.webp', 'PODCAST', 'AI Agents and the Future of Financial Infrastructure'],
+  ['https://vishwalab.com/blogDetail?slug=selective-disclosure', 'article-document.webp', 'BLOG', 'Why Selective Disclosure Is the Next Primitive'],
 ];
 
 export default function Insights({ onDialog }) {
@@ -33,16 +31,16 @@ export default function Insights({ onDialog }) {
             </article>
           ))}
         </div>
-        <div className="article-grid">
-          {articles.map(([id, img, tag, lines]) => (
-            <button className="article-card" key={id} onClick={() => onDialog(id)}>
+        <div className="article-grid two-up">
+          {articles.map(([href, img, tag, title]) => (
+            <a className="article-card" key={href} href={href} target="_blank" rel="noopener noreferrer">
               <img className="article-image" src={`/assets/images/${img}`} alt="" loading="lazy" decoding="async" />
               <div>
                 <small><Icon name="file" />{tag}</small>
-                <h3>{lines[0]}<br />{lines[1]}</h3>
+                <h3>{title}</h3>
                 <span>→</span>
               </div>
-            </button>
+            </a>
           ))}
         </div>
         <div className="actions">

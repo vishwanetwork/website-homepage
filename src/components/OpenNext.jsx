@@ -1,6 +1,6 @@
 import React from 'react';
 import Icon from './Icon.jsx';
-import { TYPEFORM_URL } from '../config.js';
+import { DEMO_URL } from '../config.js';
 
 const pipeline = [
   ['file', '01 DESCRIBE INTENT', ['Natural-language', 'demand']],
@@ -89,8 +89,8 @@ export default function OpenNext({ onDialog }) {
             </div>
           </div>
           <div className="actions">
-            <a className="button cyan" href={TYPEFORM_URL} target="_blank" rel="noopener noreferrer">Request a demo <span aria-hidden="true">→</span></a>
-            <button className="button dark" onClick={() => onDialog('gpu-index')}>View GPU Index <span aria-hidden="true">→</span></button>
+            <a className="button cyan" href={DEMO_URL} target="_blank" rel="noopener noreferrer">Request a demo <span aria-hidden="true">→</span></a>
+            <a className="button dark" href="/opennext-index-factory.html" target="_blank" rel="noopener noreferrer">View GPU Index <span aria-hidden="true">→</span></a>
           </div>
           <div className="dashboard-caption">Intent → policy → approved compute → settlement.</div>
         </div>

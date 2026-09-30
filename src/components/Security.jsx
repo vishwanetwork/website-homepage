@@ -45,10 +45,7 @@ export default function Security({ onDialog }) {
         <div className="security-flow dark-panel">
           {flow.map(([icon, label]) => (<div key={label}><Icon name={icon} /><b>{label}</b></div>))}
         </div>
-        <div className="actions">
-          <button className="button dark" onClick={() => onDialog('security-architecture')}>Read the Security Architecture <span aria-hidden="true">→</span></button>
-        </div>
-        <p className="security-note">Security is an architectural property—not a feature toggle.</p>
+        {/* <p className="security-note">Security is an architectural property—not a feature toggle.</p> */}
       </div>
     </section>
   );

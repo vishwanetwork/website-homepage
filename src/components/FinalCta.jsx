@@ -21,7 +21,6 @@ export default function FinalCta({ onDialog }) {
           ))}
         </div>
         <div className="actions">
-          <a className="button cyan" href={TYPEFORM_URL} target="_blank" rel="noopener noreferrer">Request a demo <span aria-hidden="true">→</span></a>
           <a className="button dark" href={TYPEFORM_URL} target="_blank" rel="noopener noreferrer">Talk to Us <span aria-hidden="true">→</span></a>
         </div>
         <p>Agents decide. Vishwa enforces the mandate. Approved systems execute.</p>
