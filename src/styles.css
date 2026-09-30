@@ -171,3 +171,35 @@ section[id],div[id]{scroll-margin-top:20px}
 .recognition .selected-row span{white-space:nowrap}
 .recognition .selected-row span+span{border-left:0;padding-left:0}
 .recognition .selected-row .trusted-sep{width:1px;min-height:18px;background:#c3c3ba}
+
+
+/* ===== Mobile-only fixes (<=760px), desktop untouched ===== */
+@media(max-width:760px){
+  /* 图一: TRUSTED BY 的两句 Selected 允许换行、竖排，隐藏中间竖线 */
+  .recognition .selected-row{flex-wrap:wrap;flex-direction:column;gap:8px;text-align:center;padding-top:16px;font-size:12px;line-height:1.45}
+  .recognition .selected-row span{white-space:normal}
+  .recognition .selected-row .trusted-sep{display:none}
+
+  /* 图二: COMPUTE COORDINATION 标题与图标不再溢出卡片 */
+  .compute-intro{gap:12px}
+  .compute-intro h3{white-space:normal;font-size:clamp(20px,5.2vw,30px);letter-spacing:-.5px;word-break:break-word}
+  .compute-intro p{font-size:14px}
+
+  /* 图三: 循环图整体更紧凑、留白，减轻拥挤 */
+  .orbit{max-width:340px;margin:20px auto 6px}
+  .orbit-node{width:24%;min-height:64px;font-size:8px;padding:6px 5px;gap:4px}
+  .orbit-node .icon{width:22px;height:22px}
+  .orbit-center{width:26%;height:26%}
+  .orbit-label{font-size:7px;padding:6px 5px;top:-3%}
+
+  /* 图四: THE GATE 中心文字缩小 */
+  .gate-caption b{font-size:15px;letter-spacing:.5px}
+  .gate-caption span{font-size:7px;margin-top:8px}
+}
+
+
+/* 更窄手机屏: THE GATE / CONTROL + ENFORCEMENT 再缩小 */
+@media(max-width:480px){
+  .gate-caption b{font-size:12px;letter-spacing:.3px}
+  .gate-caption span{font-size:6px;margin-top:6px}
+}
