@@ -245,3 +245,8 @@ section[id],div[id]{scroll-margin-top:20px}
   .market-stats{grid-template-columns:1fr;gap:8px;padding-bottom:8px}
   .market-stats b{font-size:16px}
 }
+
+
+/* Remove nav active-state marker (underline + dot) */
+.nav nav .active:after,
+.nav nav .active:before{content:none;display:none}
