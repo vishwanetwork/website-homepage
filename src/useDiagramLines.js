@@ -43,14 +43,26 @@ export default function useDiagramLines() {
         const bend = (x1, y1, x2, y2) =>
           `<path d="M${x1} ${y1} C${(x1 + x2) / 2} ${y1} ${(x1 + x2) / 2} ${y2} ${x2} ${y2}"/>` +
           `<circle cx="${x1}" cy="${y1}" r="3"/><circle cx="${x2}" cy="${y2}" r="3"/>`;
+        // Anchor the hub ends to the CUBE icon (RESOURCE AGENTS), not the whole
+        // .resource-hub box — the hub also contains the POLICY EVIDENCE panel, so
+        // its centre sits well below the cube and the lines would point into the
+        // middle panel. Measuring the cube keeps every line aimed at the cube.
+        const cube = hub.querySelector('.icon') || hub;
+        const c = cube.getBoundingClientRect();
+        const hubCx = c.left - b.left;
+        const hubRx = c.right - b.left;
+        const hubMid = c.top + c.height / 2 - b.top;
+        const spread = (count, i, step) => hubMid + (i - (count - 1) / 2) * step;
+        const constraints = [...document.querySelectorAll('.constraint-list>div')];
+        const providers = [...document.querySelectorAll('.provider-list article')];
         let paths = '';
-        document.querySelectorAll('.constraint-list>div').forEach((n, i) => {
+        constraints.forEach((n, i) => {
           const r = n.getBoundingClientRect();
-          paths += bend(r.right - b.left, r.top + r.height / 2 - b.top, h.left - b.left + 20, h.top - b.top + 86 + i * 19);
+          paths += bend(r.right - b.left, r.top + r.height / 2 - b.top, hubCx, spread(constraints.length, i, 22));
         });
-        document.querySelectorAll('.provider-list article').forEach((n, i) => {
+        providers.forEach((n, i) => {
           const r = n.getBoundingClientRect();
-          paths += bend(h.right - b.left - 20, h.top - b.top + 93 + i * 32, r.left - b.left, r.top + r.height / 2 - b.top);
+          paths += bend(hubRx, spread(providers.length, i, 30), r.left - b.left, r.top + r.height / 2 - b.top);
         });
         route.innerHTML = `<g stroke="#00e9d0" stroke-width="1.7" fill="none">${paths}</g>`;
       }
