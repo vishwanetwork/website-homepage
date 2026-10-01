@@ -1,11 +1,10 @@
 import React from 'react';
 import Icon from './Icon.jsx';
 
-const computeFlow = [
-  ['layers', 'SOURCE', 'COMPUTE'],
-  ['file', 'SELECT', 'PROVIDERS'],
-  ['network', 'COORDINATE', 'DELIVERY'],
-  ['check', 'SETTLE', 'COMPUTE'],
+const marketStats = [
+  ['AVAILABILITY', '12,480', 'GPUs online', '', ''],
+  ['AVG. PRICE (H100)', '$2.32 /hr', '', '12% (7d)', 'down'],
+  ['PERFORMANCE', '184 TFLOPS', '', '8% (7d)', 'up'],
 ];
 
 export default function Runtime() {
@@ -27,21 +26,34 @@ export default function Runtime() {
             <div><small>FINANCIAL AGENTS</small><h3>MARKET DISTRIBUTION</h3><p>Products · Channels · Counterparties · Venues</p></div>
           </div>
         </div>
-        <div className="divider-label">TWO AGENT DOMAINS. ONE GOVERNED RUNTIME.</div>
+        <div className="divider-label">ONE CONTROL PLANE. TWO AGENT DOMAINS.</div>
         <div className="compute-band dark-panel">
           <div className="compute-intro">
             <Icon name="cube" />
             <div>
               <small>RESOURCE AGENTS</small>
-              <h3>COMPUTE <em>COORDINATION</em></h3>
-              <p>Source compute, select approved providers,<br />coordinate delivery, and settle.</p>
+              <h3>AGENT-NATIVE<br /><em>COMPUTE MARKETS</em></h3>
+              <p>Resource agents source, compare, procure, and<br />settle AI compute across approved providers—<br />then return idle capacity to the market.</p>
               <a className="button cyan" href="https://open-next.ai/" target="_blank" rel="noopener noreferrer">Explore OpenNEXT <span aria-hidden="true">→</span></a>
             </div>
           </div>
-          <div className="compute-flow">
-            {computeFlow.map(([icon, a, b]) => (
-              <div key={a + b}><Icon name={icon} /><span>{a}<br />{b}</span></div>
-            ))}
+          <div className="compute-market">
+            <header>
+              <Icon name="chart" />
+              <h4>AGENT-VETTED GPU INDEX</h4>
+              <a href="/opennext-index-factory.html" target="_blank" rel="noopener noreferrer">View GPU Index <span aria-hidden="true">→</span></a>
+            </header>
+            <div className="market-stats">
+              {marketStats.map(([label, value, unit, delta, dir]) => (
+                <div key={label}>
+                  <small>{label}</small>
+                  <b>{value}</b>
+                  {unit && <span className="stat-unit">{unit}</span>}
+                  {delta && <span className={`stat-delta ${dir}`}>{dir === 'down' ? '▼' : '▲'} {delta}</span>}
+                </div>
+              ))}
+            </div>
+            <img className="market-chart" src="/assets/icons/gpu-price-chart-flat.svg" alt="Illustrative GPU price trends. Example curves, not live market prices." loading="lazy" decoding="async" />
           </div>
         </div>
       </div>

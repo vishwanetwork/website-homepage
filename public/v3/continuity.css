@@ -1,0 +1,140 @@
+/* Continuity layer. Independent rotate/scale compose with existing transform and translate.
+   No dimensions, positioning, grid placement, text or document order are changed. */
+.vc-on #records {
+  color:#e8f8ee;
+  background-color:#03251b;
+  background-image:radial-gradient(ellipse at 50% 16%,#12694e55,transparent 65%),linear-gradient(116deg,#021d16,#082d21 55%,#021c15);
+  box-shadow:inset 0 1px #4daa812b,inset 0 -1px #4daa812b;
+}
+.vc-on #records .section-heading h2 {color:#f1fff5}
+.vc-on #records .section-heading h2 em {color:#89eac2}
+.vc-on #records .section-heading .subtitle {color:#b2cabb}
+.vc-on #records .section-heading .eyebrow {color:#a8e6c8;background:#103c2c;border-color:#599e7a44}
+.vc-on #records .edge-art {opacity:.2;mix-blend-mode:screen}
+.vc-on #records .record-flow {
+  background-color:#05261d;
+  background-image:linear-gradient(135deg,#2a715324,transparent 45%);
+  border:1px solid #79b99a38;
+  box-shadow:0 26px 70px #00130c66,inset 0 1px #d8ffeb12;
+}
+.vc-on .vc-evidence-stage {perspective:1400px;perspective-origin:50% 80%}
+.vc-on #records .record-flow > .vc-evidence-card {
+  rotate:1 0 0 calc(var(--vc-rest,0) * var(--vc-fold-start,0deg));
+  scale:var(--vc-depth-scale,1);
+  transform-origin:50% 95%;
+  background:linear-gradient(145deg,#19513d,#062c20 47%,#031e17);
+  border-color:rgba(113,228,177,calc(.18 + var(--vc-ready,1) * .48));
+  box-shadow:0 calc(7px + var(--vc-rest,0) * 15px) 22px #00140d80,inset 0 1px #c1ffe423;
+  transition:rotate .12s linear,scale .12s linear,border-color .18s,box-shadow .18s;
+  backface-visibility:hidden;
+}
+.vc-on #records .record-flow > .vc-evidence-card:before {
+  content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+  background:linear-gradient(123deg,#d1ffe914,transparent 39%,#39e5a50b);
+}
+.vc-on #records .record-flow > .vc-evidence-card header {color:#e9fff1}
+.vc-on #records .record-flow > .vc-evidence-card header .icon {color:#b7ffdc;background:#0b3b2c;border-color:#70bf984b}
+.vc-on #records .record-flow > .vc-evidence-card .data-row {color:#9bc5b0}
+.vc-on #records .record-flow > .vc-evidence-card .data-row span:last-child {color:#def5e7}
+.vc-on #records .record-flow > .vc-evidence-card .time-check {color:#98e4b9;opacity:calc(.4 + var(--vc-ready,1) * .6)}
+.vc-on #records .record-flow > .vc-evidence-card:after {color:#65d9aa;opacity:calc(.25 + var(--vc-ready,1) * .75)}
+.vc-on #records .value-cards article {background:#f1f8f2;border-color:#a2c4af40;box-shadow:0 14px 26px #00170f32}
+.vc-on #records .value-cards article > .icon {background:#e1ede4;color:#155b40}
+.vc-on #records .value-cards h3 {color:#16452f}
+.vc-on #records .value-cards p {color:#526d5b}
+.vc-on #records .vc-ledger {background:#021c14;border-color:#4784616b;box-shadow:0 18px 45px #000e0880,inset 0 1px #aeefc819}
+.vc-on #records .vc-ledger header {color:#9ee6b9}
+.vc-on #records .vc-ledger header small {color:#9aac9f}
+.vc-on #records .vc-ledger-row {
+  opacity:calc(.45 + var(--vc-ready,1) * .55);
+  color:#cce2d3;
+  background-color:rgba(35,104,65,calc(var(--vc-ready,1) * .13));
+  border-bottom-color:rgba(112,191,144,calc(.10 + var(--vc-ready,1) * .18));
+  box-shadow:inset 2px 0 rgba(136,246,177,calc(var(--vc-ready,1) * .57));
+  transition:opacity .16s,background-color .16s,box-shadow .16s;
+}
+.vc-on #records .vc-ledger-row > .icon {color:#9de3b9}
+.vc-on #records .vc-ledger-row b {color:#f0fff4}
+.vc-on #records .actions .button:not(.dark) {color:#d7f5e2;background:#123a27;border-color:#649f7655}
+.vc-on #records .actions .button.dark {background:#b0e7c0;color:#123d24;border-color:#b0e7c0}
+.vc-on #records .bottom-note {color:#acc7b4}
+
+/* The console opens as one stable surface; its existing interactive elements remain intact. */
+.vc-on #developers {perspective:1600px}
+.vc-on #developers .vc-console {
+  rotate:1 0 0 calc(var(--vc-rest,0) * var(--vc-fold-start,0deg));
+  scale:var(--vc-depth-scale,1);
+  transform-origin:50% 70%;
+  perspective:1100px;
+  border:1px solid #44785880;
+  border-radius:12px;
+  background-color:#052319;
+  box-shadow:0 26px 62px #0b493127,inset 0 1px #c6ebcf24;
+  transition:rotate .12s linear,scale .12s linear,box-shadow .25s;
+}
+.vc-on #developers .vc-console .agent-tabs {border-bottom-color:#74b98a55}
+.vc-on #developers .vc-request,
+.vc-on #developers .vc-response {
+  rotate:1 0 0 calc(var(--vc-rest,0) * var(--vc-fold-start,0deg));
+  scale:var(--vc-depth-scale,1);
+  transform-origin:50% 0%;
+  opacity:calc(.32 + var(--vc-ready,1) * .68);
+  transition:rotate .12s linear,scale .12s linear,opacity .15s;
+  backface-visibility:hidden;
+}
+.vc-on #developers .vc-console .codebox {border-color:#42795888;background:#031b13;box-shadow:inset 0 1px #d2ffe514}
+.vc-on #developers .vc-console .codebox header {background:linear-gradient(110deg,#153b28,#09281b);border-color:#537c5f4d}
+.vc-on #developers .vc-console .codebox header em {color:#a3e9be}
+.vc-on #developers .vc-response {box-shadow:0 8px 22px #000e0838}
+.vc-on #developers .vc-console:focus-within,
+.vc-on #developers .vc-request:focus-within,
+.vc-on #developers .vc-response:focus-within {rotate:none;scale:1;opacity:1}
+.vc-on #developers .vc-console button:focus-visible {outline:2px solid #a6ebc0;outline-offset:3px}
+
+/* Fold the existing assurance cards; keep all original bounds and placement. */
+.vc-on .vc-assurance-stage {perspective:1400px;perspective-origin:50% 85%}
+.vc-on #security .vc-assurance-card {
+  rotate:1 var(--vc-hinge-axis,0) 0 calc(var(--vc-rest,0) * var(--vc-fold-start,0deg));
+  scale:var(--vc-depth-scale,1);
+  transform-origin:50% 100%;
+  background:linear-gradient(138deg,#fff,#f4f8f1);
+  border-radius:8px;
+  box-shadow:0 calc(var(--vc-rest,0) * 18px) calc(1px + var(--vc-rest,0) * 28px) #0b4f2520,inset 0 1px #fff;
+  transition:rotate .12s linear,scale .12s linear,box-shadow .18s;
+  backface-visibility:hidden;
+}
+.vc-on #security .vc-assurance-card > .icon {
+  background:#e6f1e5;color:#235d39;
+  box-shadow:0 0 0 1px rgba(40,123,67,calc(.04 + var(--vc-ready,1) * .12));
+}
+.vc-on #security .vc-assurance-step {opacity:calc(.45 + var(--vc-ready,1) * .55);transition:opacity .15s}
+.vc-on #security .vc-assurance-step .icon {border-color:rgba(116,221,147,calc(.18 + var(--vc-ready,1) * .48))}
+
+/* Pointer tilt composes with the source hover transform and its source translate. */
+.vc-on #insights .domain-stories,.vc-on #insights .article-grid {perspective:1400px}
+.vc-on #insights .vc-insight-card {
+  rotate:var(--vc-axis-x,1) var(--vc-axis-y,0) 0 var(--vc-pointer-angle,0deg);
+  transform-origin:50% 50%;
+  border-radius:7px;
+  background-color:#fff;
+  background-image:radial-gradient(ellipse at var(--vc-light-x,50%) var(--vc-light-y,35%),#8cd5a319,transparent 64%);
+  transition:rotate .18s cubic-bezier(.2,.75,.2,1),box-shadow .22s,border-color .22s;
+  backface-visibility:hidden;
+}
+.vc-on #insights .vc-insight-card.vc-pointer-active {box-shadow:0 16px 34px #184e2324}
+.vc-on #insights .article-card:focus-visible {outline:2px solid #3c9260;outline-offset:6px;rotate:none;box-shadow:0 12px 28px #184e2320}
+.vc-on #insights .article-card:focus-within {rotate:none}
+
+/* Immediate readability is the default outside desktop motion mode. */
+.vc-on.vc-quiet :is(.vc-evidence-stage,.vc-assurance-stage,.vc-console),
+.vc-on.vc-quiet #developers,
+.vc-on.vc-quiet #insights :is(.domain-stories,.article-grid) {perspective:none}
+.vc-on.vc-quiet :is(.vc-evidence-card,.vc-console,.vc-request,.vc-response,.vc-assurance-card,.vc-insight-card) {rotate:none!important;scale:1!important;opacity:1!important;transition:none!important;backface-visibility:visible}
+.vc-on.vc-quiet :is(.vc-ledger-row,.vc-assurance-step) {opacity:1!important;transition:none!important}
+.vc-on.vc-paused :is(.vc-evidence-card,.vc-console,.vc-request,.vc-response,.vc-assurance-card,.vc-insight-card,.vc-ledger-row,.vc-assurance-step) {transition:none!important}
+@media(max-width:900px),(hover:none),(prefers-reduced-motion:reduce) {
+  .vc-on :is(.vc-evidence-stage,.vc-assurance-stage,.vc-console),.vc-on #developers,.vc-on #insights :is(.domain-stories,.article-grid) {perspective:none}
+  .vc-on :is(.vc-evidence-card,.vc-console,.vc-request,.vc-response,.vc-assurance-card,.vc-insight-card) {rotate:none!important;scale:1!important;opacity:1!important;transition:none!important;backface-visibility:visible}
+  .vc-on :is(.vc-ledger-row,.vc-assurance-step) {opacity:1!important;transition:none!important}
+  .vc-on #records .record-flow > .vc-evidence-card .time-check {opacity:1}
+}

@@ -50,7 +50,6 @@ export default function Hero() {
           <div className="trusted-logos">
             <img src="/assets/logos/pharos.png" alt="Pharos" />
             <img src="/assets/logos/fidelity.png" alt="Fidelity Labs" />
-            <img src="/assets/logos/bitgo.png" alt="BitGo" />
             <span className="trusted-wordmark">Ondo</span>
             <img src="/assets/logos/solana.png" alt="Solana" />
           </div>

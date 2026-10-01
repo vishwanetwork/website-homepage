@@ -88,7 +88,7 @@ export default function OpenNext({ onDialog }) {
               <img className="gpu-chart-img" src="/assets/icons/gpu-price-chart.svg" alt="Illustrative GPU price trends. Example curves, not live market prices." loading="lazy" decoding="async" />
             </div>
           </div>
-          <div className="actions">
+          <div className="actions actions-gpu">
             <a className="button cyan" href={DEMO_URL} target="_blank" rel="noopener noreferrer">Request a demo <span aria-hidden="true">→</span></a>
             <a className="button dark" href="/opennext-index-factory.html" target="_blank" rel="noopener noreferrer">View GPU Index <span aria-hidden="true">→</span></a>
           </div>

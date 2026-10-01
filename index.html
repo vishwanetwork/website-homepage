@@ -7,9 +7,27 @@
   <meta name="description" content="One governed runtime across capital and compute. Financial infrastructure for autonomous agents." />
   <meta name="theme-color" content="#001d16" />
   <link rel="icon" href="/logo.ico" />
+  <link rel="stylesheet" href="/v3/motion.css" />
+  <link rel="stylesheet" href="/v3/gate-story.css" />
+  <link rel="stylesheet" href="/v3/cinematic.css" />
+  <link rel="stylesheet" href="/v3/transitions.css" />
+  <link rel="stylesheet" href="/v3/continuity.css" />
+  <link rel="stylesheet" href="/v3/overrides.css" />
 </head>
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
+  <!-- Vishwa Cinematic V3 runtime. Enhances the mounted React DOM; it does not
+       replace any link, button target or dialog behaviour. -->
+  <script>
+    window.__VM_ASSETS = new Proxy({}, { get: (_, key) => (typeof key === 'string' ? key : undefined) });
+  </script>
+  <script defer src="/v3/motion.js"></script>
+  <script defer src="/v3/vendor/three.min.js"></script>
+  <script defer src="/v3/scene.js"></script>
+  <script defer src="/v3/gate-story.js"></script>
+  <script defer src="/v3/transitions.js"></script>
+  <script defer src="/v3/continuity.js"></script>
+  <script defer src="/v3/cinematic.js"></script>
 </body>
 </html>

@@ -1,0 +1,232 @@
+{
+  "version": "cinematic-v3",
+  "basis": "https://gw.test.vishwatest.com/",
+  "basisType": "downloaded-public-production-build",
+  "deployment": "local-preview-only",
+  "independentVersion": true,
+  "previousVersion": {
+    "version": "cinematic-v2",
+    "preserved": true,
+    "directory": "../Vishwa_Cinematic/",
+    "standaloneEntry": "../Vishwa_Cinematic.html"
+  },
+  "entryPoints": {
+    "standaloneOffline": "../Vishwa_Cinematic_V3.html",
+    "multiFile": "index.html",
+    "multiFileRequiresHttp": true
+  },
+  "controls": {
+    "fullTourDurationSeconds": 52,
+    "fullTourDesktopOnly": true,
+    "pauseAndResume": true,
+    "staticMode": true,
+    "primaryJumps": [
+      "home",
+      "gate-cinematic",
+      "compute-cinematic"
+    ],
+    "laterSectionSelect": [
+      "improvement",
+      "records",
+      "developers",
+      "security",
+      "insights",
+      "faq",
+      "finale"
+    ]
+  },
+  "referenceRepository": {
+    "url": "https://github.com/vishwanetwork/vishwa-website-060928",
+    "requestedUse": "reference-only",
+    "readOnly": true,
+    "status": "unavailable-to-current-connections",
+    "attempts": [
+      {
+        "method": "Node fetch to public GitHub REST repository metadata",
+        "status": 404,
+        "message": "Not Found"
+      },
+      {
+        "method": "GitHub connector with repository_full_name",
+        "status": 404,
+        "message": "Not Found"
+      },
+      {
+        "method": "Local gh repo view",
+        "status": 401,
+        "message": "Requires authentication"
+      }
+    ],
+    "defaultBranch": null,
+    "commit": null,
+    "sourceDownloaded": false,
+    "sourceUsed": false,
+    "commitsCreated": false,
+    "pushed": false,
+    "overwritten": false,
+    "note": "404 does not distinguish a wrong or missing repository path from a private repository unavailable to the current connection. The implementation basis remains the public website build."
+  },
+  "scenes": [
+    {
+      "id": "hero",
+      "implementation": [
+        "scene.js",
+        "cinematic.js",
+        "cinematic.css"
+      ],
+      "geometry": "Procedural 3D glass frames, solid glass slabs, studio environment reflections, floor and GPU particles.",
+      "dependency": "vendor/three.min.js",
+      "dependencyVersion": "0.160.1",
+      "license": "vendor/LICENSE",
+      "fallback": "assets/images/gate-portal.webp"
+    },
+    {
+      "id": "trusted-by-act-four",
+      "implementation": [
+        "transitions.js",
+        "transitions.css",
+        "cinematic.js",
+        "cinematic.css"
+      ],
+      "transition": "Existing brand cards unfold over the 3D hero background, followed by a dark-to-light transition into the main page.",
+      "content": "Existing brands and program-selection statements retained."
+    },
+    {
+      "id": "gate-cinematic",
+      "implementation": [
+        "gate-story.js",
+        "gate-story.css"
+      ],
+      "images": [
+        "assets/images/gate-portal.webp"
+      ],
+      "geometry": "HTML request cards, policy checks, SVG symbols and a CSS perspective floor; authorized and out-of-mandate examples retained."
+    },
+    {
+      "id": "part-05-improvement",
+      "implementation": [
+        "motion.js",
+        "motion.css",
+        "cinematic.css",
+        "transitions.js",
+        "transitions.css"
+      ],
+      "content": "Existing workflow-memory diagram and policy boundaries retained.",
+      "fixes": [
+        "Resolve enhancement displacement conflicts with original node positioning.",
+        "Remove the heading nowrap constraint that squeezed the diagram column."
+      ]
+    },
+    {
+      "id": "compute-cinematic",
+      "implementation": [
+        "cinematic.js",
+        "cinematic.css",
+        "motion.js",
+        "motion.css"
+      ],
+      "images": [
+        "assets/icons/gpu-price-chart.svg",
+        "assets/icons/sprite.svg"
+      ],
+      "geometry": "Existing application panel presented in a scroll-driven perspective scene; original fields, illustrative chart and links retained."
+    },
+    {
+      "id": "later-page-continuity",
+      "implementation": [
+        "continuity.js",
+        "continuity.css"
+      ],
+      "sections": {
+        "records": "Deep-green visual chapter; six evidence cards unfold sequentially and execution-record rows illuminate.",
+        "developers": "Existing console opens with sequential request and response panels; React tabs and copy controls remain intact.",
+        "security": "Existing assurance cards unfold and flow steps illuminate.",
+        "insights": "Restrained pointer parallax and hover depth on existing cards."
+      },
+      "newLongPins": false,
+      "reparentsBusinessNodes": false,
+      "preservesOriginalTransformAndTranslate": true,
+      "api": "window.VishwaContinuity.mount() returns { update({ staticMode, paused }), dispose() }",
+      "ownsAnimationLoop": false,
+      "ownsScrollListener": false
+    },
+    {
+      "id": "finale",
+      "implementation": [
+        "scene.js",
+        "cinematic.js",
+        "cinematic.css",
+        "transitions.js",
+        "transitions.css"
+      ],
+      "geometry": "Opening 3D space returns behind the existing final CTA.",
+      "reusesHeroCanvas": true,
+      "additionalWebGLScene": false
+    }
+  ],
+  "modules": {
+    "transitions": [
+      "transitions.js",
+      "transitions.css"
+    ],
+    "continuity": [
+      "continuity.js",
+      "continuity.css"
+    ]
+  },
+  "responsiveBehavior": {
+    "mobile": "No long pinned narrative; complete content remains readable.",
+    "reducedMotion": "No long pinned narrative or complex 3D card motion; complete content remains readable.",
+    "staticMode": "Complete content displayed directly.",
+    "webglUnavailable": "Existing image fallback."
+  },
+  "imagesDirectory": "assets/images/",
+  "fontsDirectory": "assets/fonts/",
+  "iconsDirectory": "assets/icons/",
+  "imagesRemainSeparateFiles": true,
+  "noNewGeneratedRasterImages": true,
+  "verification": {
+    "status": "complete",
+    "version": "cinematic-v3",
+    "environment": "Automated headless Microsoft Edge checks. Narrow browser viewports are not physical-device GPU benchmarks.",
+    "results": "qa/v3/results.json",
+    "responsiveFinal": "qa/v3/responsive-final.json",
+    "fullTour": "qa/v3/full-tour.json",
+    "fullTourPassed": true,
+    "fullTourCheckedAt": "2026-09-30T09:39:57.192Z",
+    "scope": {
+      "responsiveViewportWidths": [
+        768,
+        390
+      ],
+      "fullTourViewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "responsive": "No horizontal overflow at the checked widths; mobile menu opens.",
+      "part05": "Six nodes retain absolute positioning; no overlaps; positions remain consistent with motion enabled or disabled.",
+      "trustedBy": "One recognition instance containing five brand cards.",
+      "continuity": "Six evidence cards mounted.",
+      "interactions": [
+        "Agent tabs",
+        "FAQ",
+        "Mobile menu"
+      ],
+      "reducedMotionRunningAnimations": 0,
+      "missingImages": 0,
+      "pageErrors": 0,
+      "networkErrors": 0,
+      "fullTour": "Playback is observed stopped at approximately 52.6 seconds with the finale visible, one existing canvas moved to the footer and the same canvas restored to the hero.",
+      "externalHttpRequestsDuringOfflineFullTour": 0,
+      "finaleArrivalCriterion": "Finale scene visible in viewport; exact anchor equality is diagnostic only because reveal transforms can alter measured bounds."
+    },
+    "limitations": [
+      "Results cover the recorded automated Edge checks only.",
+      "No real-device mobile GPU performance analysis is claimed.",
+      "No Safari or all-browser acceptance is claimed."
+    ],
+    "legacyQa": "Existing qa files outside qa/v3 belong to V2 and are not V3 evidence.",
+    "archiveQaScope": "qa/v3 only"
+  },
+  "productionIntegration": "Integrate against the actual React source using components and explicit lifecycle, scrolling, accessibility, responsive fallback and disposal handling. This public-build overlay is a local preview, not a replacement source repository."
+}
