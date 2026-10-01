@@ -33,36 +33,50 @@ export default function useDiagramLines() {
         }
       }
 
-      // OpenNEXT: connect constraint items and providers to the center resource-hub
+      // OpenNEXT: connect constraint items and providers to the center resource-hub.
+      // The cinematic .compute-dashboard carries a 3D transform (rotateX/rotateY +
+      // scale) that varies with viewport width, so getBoundingClientRect returns
+      // perspective-projected screen coords that no longer match the SVG's own
+      // coordinate space — lines align on a laptop but drift on a wide monitor.
+      // Measure in LOCAL layout space (offsetLeft/offsetTop up to .compute-body)
+      // instead; local offsets ignore any ancestor transform, so the result is
+      // identical at every width.
       const route = document.querySelector('.routing-lines');
       const hub = document.querySelector('.resource-hub');
-      if (route && hub && window.innerWidth > 760) {
-        const b = route.getBoundingClientRect();
-        const h = hub.getBoundingClientRect();
-        route.setAttribute('viewBox', `0 0 ${b.width} ${b.height}`);
+      const body = route?.closest('.compute-body');
+      if (route && hub && body && window.innerWidth > 760) {
+        // accumulate offsets of an HTML el relative to .compute-body (offset*
+        // props are HTMLElement-only — never call this on an <svg> icon).
+        const local = el => {
+          let x = 0, y = 0, n = el;
+          while (n && n !== body) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; }
+          return { x, y, w: el.offsetWidth, h: el.offsetHeight };
+        };
+        route.setAttribute('viewBox', `0 0 ${body.offsetWidth} ${body.offsetHeight}`);
         const bend = (x1, y1, x2, y2) =>
           `<path d="M${x1} ${y1} C${(x1 + x2) / 2} ${y1} ${(x1 + x2) / 2} ${y2} ${x2} ${y2}"/>` +
           `<circle cx="${x1}" cy="${y1}" r="3"/><circle cx="${x2}" cy="${y2}" r="3"/>`;
-        // Anchor the hub ends to the CUBE icon (RESOURCE AGENTS), not the whole
-        // .resource-hub box — the hub also contains the POLICY EVIDENCE panel, so
-        // its centre sits well below the cube and the lines would point into the
-        // middle panel. Measuring the cube keeps every line aimed at the cube.
-        const cube = hub.querySelector('.icon') || hub;
-        const c = cube.getBoundingClientRect();
-        const hubCx = c.left - b.left;
-        const hubRx = c.right - b.left;
-        const hubMid = c.top + c.height / 2 - b.top;
+        // Anchor the hub ends to the CUBE icon (RESOURCE AGENTS). The cube is an
+        // <svg> (no offset* props), so derive its box from .resource-hub (a div):
+        // the cube sits horizontally centred near the hub's top. hubTopPad is the
+        // cube's vertical centre measured from the hub top; cubeW is its width.
+        const H = local(hub);
+        const cubeW = 115;
+        const hubTopPad = 95;
+        const hubCx = H.x + H.w / 2 - cubeW / 2;
+        const hubRx = H.x + H.w / 2 + cubeW / 2;
+        const hubMid = H.y + hubTopPad;
         const spread = (count, i, step) => hubMid + (i - (count - 1) / 2) * step;
         const constraints = [...document.querySelectorAll('.constraint-list>div')];
         const providers = [...document.querySelectorAll('.provider-list article')];
         let paths = '';
         constraints.forEach((n, i) => {
-          const r = n.getBoundingClientRect();
-          paths += bend(r.right - b.left, r.top + r.height / 2 - b.top, hubCx, spread(constraints.length, i, 22));
+          const r = local(n);
+          paths += bend(r.x + r.w, r.y + r.h / 2, hubCx, spread(constraints.length, i, 22));
         });
         providers.forEach((n, i) => {
-          const r = n.getBoundingClientRect();
-          paths += bend(hubRx, spread(providers.length, i, 30), r.left - b.left, r.top + r.height / 2 - b.top);
+          const r = local(n);
+          paths += bend(hubRx, spread(providers.length, i, 30), r.x, r.y + r.h / 2);
         });
         route.innerHTML = `<g stroke="#00e9d0" stroke-width="1.7" fill="none">${paths}</g>`;
       }

@@ -146,8 +146,8 @@
   .vx-trust-scene .selected-row{opacity:1;transform:none}
 }
 
-/* Dock on phones keeps only 播放整页 / 暂停 / 静态模式 (plus the fold toggle).
-   The jump shortcuts and the 后半页 select are dropped for room. */
+/* Dock on phones keeps only Play tour / Pause / Static mode (plus the fold toggle).
+   The jump shortcuts and the "Later sections" select are dropped for room. */
 @media(max-width:760px){
   .vx-dock{bottom:10px;gap:5px;padding:6px;flex-wrap:nowrap;justify-content:center;max-width:calc(100vw - 12px)}
   .vx-dock strong{display:none}
@@ -158,6 +158,8 @@
   .vx-dock [data-vx-play],
   .vx-dock [data-vx-pause],
   .vx-dock [data-vx-static]{display:inline-block;padding:8px 11px;font-size:11px;white-space:nowrap}
+  /* Leave room so the fixed dock never covers the footer's bottom content */
+  .vx-mode .vw-footer{padding-bottom:96px}
 }
 
 /* ---------------------------------------------------------------------------

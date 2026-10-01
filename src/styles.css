@@ -250,3 +250,7 @@ section[id],div[id]{scroll-margin-top:20px}
 /* Remove nav active-state marker (underline + dot) */
 .nav nav .active:after,
 .nav nav .active:before{content:none;display:none}
+
+
+/* Nudge EVALUATION node up on PC so it sits on the orbit ring, not below it */
+@media(min-width:761px){.orbit-3{bottom:10%}}
