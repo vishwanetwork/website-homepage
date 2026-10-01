@@ -2,12 +2,9 @@ import React from 'react';
 import { TYPEFORM_URL } from '../config.js';
 
 const links = [
-  { id: 'runtime', label: 'Platform' },
-  { id: 'gate', label: 'Banking Infrastructure' },
-  { id: 'developers', label: 'Veta' },
+  { href: 'https://vishwalab.com/', label: 'Banking Infrastructure', external: true },
+  { href: 'https://vetagate.com/', label: 'Veta', external: true },
   { id: 'opennext', label: 'OpenNEXT' },
-  { id: 'developers', label: 'Developers' },
-  { id: 'insights', label: 'Resources' },
   { href: 'https://vault.vishwalab.com/', label: 'Vault', external: true },
   { href: 'https://cli.vishwalab.com/', label: 'CLI', external: true },
 ];

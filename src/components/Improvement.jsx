@@ -50,7 +50,6 @@ export default function Improvement() {
               </div>
               <p><Icon name="lock" />Workflow optimization cannot change these controls. Policy changes follow a<br />formal process led by authorized institutional personnel.</p>
             </div>
-            <a className="button dark" href="#runtime">Explore the Runtime <span aria-hidden="true">→</span></a>
           </div>
           <div className="orbit">
             <span className="orbit-label"><Icon name="shield" /> INSTITUTIONAL POLICY · FIXED BOUNDARY</span>
