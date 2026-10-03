@@ -107,6 +107,13 @@
     var lastPercent = -1;
     var disposed = false;
     var api;
+    // Keep the caption above the card when fonts or viewport size change.
+    function measureCard() {
+      style.setProperty('--vg-a-half-height', anchors[0].offsetHeight / 2 + 'px');
+    }
+    var cardObserver = new ResizeObserver(measureCard);
+    cardObserver.observe(anchors[0]);
+    measureCard();
 
     function set(name, n, suffix) { style.setProperty('--vg-' + name, Number(n).toFixed(4) + (suffix || '')); }
     function update(progress) {
@@ -141,6 +148,7 @@
       set('b-opacity', segment(p, 0.055, 0.135));
       set('b-rotate', -8 * (1 - blocked), 'deg');
       set('blocked', blocked);
+      set('rejected-caption-opacity', staticMode ? 1 : segment(p, 0.78, 0.9));
       set('allowed', allowed);
       set('checks-opacity', segment(p, 0.125, 0.235) * (1 - segment(p, 0.65, 0.76)));
       set('checks-y', 18 * (1 - segment(p, 0.125, 0.235)) - 20 * segment(p, 0.65, 0.76), 'px');
@@ -183,6 +191,7 @@
     function dispose() {
       if (disposed) return;
       disposed = true;
+      cardObserver.disconnect();
       buttons.forEach(function (button) { button.removeEventListener('click', navigate); });
       image.removeEventListener('error', onImageError);
       section.remove();

@@ -4,8 +4,8 @@ import { TYPEFORM_URL } from '../config.js';
 const links = [
   { href: 'https://vishwalab.com/', label: 'Banking Infrastructure', external: true },
   { href: 'https://vetagate.com/', label: 'Veta', external: true },
-  { id: 'opennext', label: 'OpenNEXT' },
-  { href: 'https://vault.vishwalab.com/', label: 'Vault', external: true },
+  { href: 'https://open-next.ai', label: 'OpenNEXT', external: true },
+  { href: 'https://vault.vishwalab.com/', label: 'AI Vault', external: true },
   { href: 'https://cli.vishwalab.com/', label: 'CLI', external: true },
 ];
 

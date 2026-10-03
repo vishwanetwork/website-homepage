@@ -17,14 +17,14 @@ export default function Runtime() {
           <p className="subtitle">Financial agents move capital. Resource agents source and settle compute.<br />Vishwa governs both through the same policy, proof, and settlement layer.</p>
         </div>
         <div className="finance-grid">
-          <div className="finance-card">
+          <a className="finance-card" href="https://vishwalab.com" target="_blank" rel="noopener noreferrer">
             <Icon name="bank" />
             <div><small>FINANCIAL AGENTS</small><h3>Agentic Native Banking Infra</h3><p>Treasury · Payments · Credit · Vaults</p></div>
-          </div>
-          <div className="finance-card">
+          </a>
+          <a className="finance-card" href="/market-distribution.html">
             <Icon name="network" />
             <div><small>FINANCIAL AGENTS</small><h3>MARKET DISTRIBUTION</h3><p>Products · Channels · Counterparties · Venues</p></div>
-          </div>
+          </a>
         </div>
         <div className="divider-label">ONE CONTROL PLANE. TWO AGENT DOMAINS.</div>
         <div className="compute-band dark-panel">

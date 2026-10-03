@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#031c15" />
+  <meta name="description" content="Watch the Vishwa Market Distribution video." />
+  <title>Market Distribution | Vishwa</title>
+  <link rel="icon" href="/logo.ico" />
+  <style>
+    @font-face{font-family:Inter;src:url('/assets/fonts/inter-latin.woff2') format('woff2');font-style:normal;font-weight:100 900;font-display:swap}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100svh;background:#031c15;color:#f1fff8;font-family:Inter,Arial,sans-serif;line-height:1.5}
+    a{color:inherit;text-decoration:none}
+    a:focus-visible,video:focus-visible{outline:3px solid #b2f8d8;outline-offset:5px}
+    .header{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px clamp(20px,5vw,80px);border-bottom:1px solid #ffffff1a}
+    .brand img{display:block;width:120px;height:auto;filter:brightness(0) invert(1)}
+    .back{font-size:14px;color:#b2f8d8;padding:8px 0}
+    .back:hover{text-decoration:underline;text-underline-offset:4px}
+    main{width:min(1120px,100% - 40px);margin:0 auto;padding:40px 0 32px}
+    .eyebrow{margin:0 0 10px;color:#86c8ac;font-size:11px;font-weight:600;letter-spacing:.15em}
+    h1{font-size:clamp(28px,4vw,48px);line-height:1.12;letter-spacing:-.04em;margin:0 0 12px}
+    .intro{color:#b0c9bd;font-size:15px;margin:0 0 24px}
+    .player{overflow:hidden;border:1px solid #37745c;border-radius:12px;background:#000;box-shadow:0 16px 48px #0004}
+    video{display:block;width:100%;height:auto;max-height:72svh;object-fit:contain;background:#000}
+    .help{margin:16px 0 0;color:#a5c3b4;font-size:13px}
+    .help a{color:#b2f8d8;text-decoration:underline;text-underline-offset:3px}
+    .error{color:#ffb3a6;font-size:14px;margin:14px 0 0}
+    [hidden]{display:none!important}
+    @media(max-width:600px){.header{padding:16px 20px}.brand img{width:100px}.back{font-size:12px}main{padding-top:28px}.player{border-radius:8px}video{max-height:65svh}}
+  </style>
+</head>
+<body>
+  <header class="header">
+    <a class="brand" href="/" aria-label="Vishwa home"><img src="/assets/icons/logo-vishwa.png" alt="Vishwa" /></a>
+    <a class="back" href="/#runtime">← Back to Vishwa</a>
+  </header>
+  <main>
+    <p class="eyebrow">FINANCIAL AGENTS</p>
+    <h1>Market Distribution</h1>
+    <p class="intro">This video has no audio. If playback doesn’t start automatically, press play.</p>
+    <div class="player">
+      <video id="distribution-video" controls autoplay muted playsinline preload="auto" aria-label="Vishwa Market Distribution video" aria-describedby="video-help">
+        <source id="distribution-source" src="/assets/videos/vishwa_booth_demo_mobile.mp4" type="video/mp4" />
+        Your browser does not support embedded video. <a href="/assets/videos/vishwa_booth_demo_mobile.mp4">Open the video directly</a>.
+      </video>
+    </div>
+    <p id="video-error" class="error" role="alert" hidden>The video could not be loaded or played. Try opening it directly using the link below.</p>
+    <p id="video-help" class="help">Use the player controls for playback and full screen. <a href="/assets/videos/vishwa_booth_demo_mobile.mp4" target="_blank" rel="noopener noreferrer">Open video directly ↗</a></p>
+  </main>
+  <script>
+    const video = document.getElementById('distribution-video');
+    const source = document.getElementById('distribution-source');
+    const error = document.getElementById('video-error');
+    const showError = () => { error.hidden = false; };
+    video.addEventListener('error', showError);
+    source.addEventListener('error', showError);
+    video.addEventListener('loadeddata', () => { error.hidden = true; });
+    if (video.error || video.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) showError();
+    window.addEventListener('pagehide', () => video.pause());
+  </script>
+</body>
+</html>

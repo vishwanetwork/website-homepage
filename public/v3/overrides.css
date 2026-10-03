@@ -24,24 +24,55 @@
   gap:18px;
 }
 .vx-partner{width:220px;height:150px;flex:0 0 auto}
+/* Keep white artwork on a solid dark tile throughout the background transition. */
+.vx-trust-scene .vx-partner{
+  background:#073b2c;
+  border-color:#39846b;
+  color:#f1fff8;
+  box-shadow:0 12px 32px #001b1526;
+  backdrop-filter:none;
+}
+.vx-trust-scene .recognition .trusted-logos img{
+  max-width:170px;
+  height:56px;
+  opacity:1;
+  filter:brightness(0) invert(1);
+}
+.vx-trust-scene .recognition .trusted-logos img[alt="Pharos"]{max-width:64px;height:68px}
+.vx-trust-scene .recognition .trusted-logos img[alt="Solana"]{max-width:72px;height:64px}
+.vx-trust-scene .recognition .trusted-wordmark{color:#fff;font-size:32px;font-weight:650}
 
-/* 3. Desktop shows one "|" between the two sentences; the grey rule above them
-      is dropped because the section already has the dark green divider. */
-.vx-trust-scene .selected-row{
+/* 3. Size each desktop sentence by its content instead of equal-width columns.
+      Stack the sentences on smaller screens rather than squeezing the longer one. */
+.vx-trust-scene .recognition .selected-row{
   display:flex;
   align-items:center;
   justify-content:center;
   gap:0;
-  max-width:1100px;
+  width:100%;
+  max-width:1190px;
   margin:28px auto 0;
+  padding:12px;
+  background:#f1faf5;
+  border:1px solid #b8d8c8;
+  border-top:3px solid #147753;
+  border-radius:8px;
+  box-shadow:0 8px 24px #001b1510;
 }
-.vx-trust-scene .selected-row>span:not(.trusted-sep){
+.vx-trust-scene .recognition .selected-row>span:not(.trusted-sep){
   border-top:0;
-  padding:14px 26px;
-  flex:0 1 auto;
+  padding:10px 12px;
+  flex:1 0 auto;
+  min-width:0;
+  white-space:nowrap;
+  font-size:clamp(15px,1.1vw,17px);
+  font-weight:600;
+  line-height:1.6;
+  color:#124b36;
+  opacity:1;
   text-align:center;
 }
-.vx-trust-scene .selected-row .trusted-sep{
+.vx-trust-scene .recognition .selected-row .trusted-sep{
   display:block;
   align-self:center;
   width:1px;
@@ -49,6 +80,12 @@
   background:currentColor;
   opacity:.45;
   flex:0 0 auto;
+}
+
+@media(min-width:761px) and (max-width:1199px){
+  .vx-trust-scene .recognition .selected-row{flex-direction:column;gap:4px}
+  .vx-trust-scene .recognition .selected-row>span:not(.trusted-sep){flex:0 1 auto;padding:6px 0}
+  .vx-trust-scene .recognition .selected-row .trusted-sep{display:none}
 }
 
 @media(max-width:760px){
@@ -66,9 +103,12 @@
     grid-column:auto;
   }
   /* Mobile stacks the two sentences so neither is clipped, and hides the rule. */
-  .vx-trust-scene .selected-row{flex-direction:column;gap:6px;margin-top:22px}
-  .vx-trust-scene .selected-row>span:not(.trusted-sep){padding:8px 0;font-size:11.5px;line-height:1.5}
-  .vx-trust-scene .selected-row .trusted-sep{display:none}
+  .vx-trust-scene .recognition .selected-row{flex-direction:column;gap:6px;margin-top:22px}
+  .vx-trust-scene .recognition .selected-row>span:not(.trusted-sep){padding:8px 0;font-size:15px;line-height:1.5;flex:0 1 auto;white-space:normal}
+  .vx-trust-scene .recognition .trusted-logos img{max-width:126px;height:42px}
+  .vx-trust-scene .recognition .trusted-logos img[alt="Pharos"]{max-width:48px;height:52px}
+  .vx-trust-scene .recognition .trusted-logos img[alt="Solana"]{max-width:54px;height:48px}
+  .vx-trust-scene .recognition .selected-row .trusted-sep{display:none}
 }
 
 
@@ -134,7 +174,7 @@
     opacity:var(--vt-card,0);
     transform:translate3d(0,calc((1 - var(--vt-card,0)) * 40px),0);
   }
-  .vx-trust-scene .selected-row{
+  .vx-trust-scene .recognition .selected-row{
     opacity:var(--vt-programs,0);
     transform:translateY(calc((1 - var(--vt-programs,0)) * 14px));
   }
@@ -143,23 +183,7 @@
 @media(max-width:760px) and (prefers-reduced-motion:reduce){
   .vx-trust-scene{position:relative;inset:auto;opacity:1}
   .vx-trust-scene .vx-partner{opacity:1;transform:none}
-  .vx-trust-scene .selected-row{opacity:1;transform:none}
-}
-
-/* Dock on phones keeps only Play tour / Pause / Static mode (plus the fold toggle).
-   The jump shortcuts and the "Later sections" select are dropped for room. */
-@media(max-width:760px){
-  .vx-dock{bottom:10px;gap:5px;padding:6px;flex-wrap:nowrap;justify-content:center;max-width:calc(100vw - 12px)}
-  .vx-dock strong{display:none}
-  .vx-dock [data-vx-home],
-  .vx-dock [data-vx-gate],
-  .vx-dock [data-vx-compute],
-  .vx-dock [data-vx-later]{display:none}
-  .vx-dock [data-vx-play],
-  .vx-dock [data-vx-pause],
-  .vx-dock [data-vx-static]{display:inline-block;padding:8px 11px;font-size:11px;white-space:nowrap}
-  /* Leave room so the fixed dock never covers the footer's bottom content */
-  .vx-mode .vw-footer{padding-bottom:96px}
+  .vx-trust-scene .recognition .selected-row{opacity:1;transform:none}
 }
 
 /* ---------------------------------------------------------------------------
@@ -246,3 +270,23 @@
    gate-story.css already ships a clean, unpinned mobile layout (one title shown,
    scene laid out as a readable grid, every card at full opacity), so the fix is
    simply to NOT re-pin here and let that base layout win. */
+
+/* One full-click-target CTA, with its arrow and no text underline. */
+#insights .insights-explore{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  padding:12px 24px;
+  border:1px solid #0b6248;
+  border-radius:6px;
+  background:#032b21;
+  color:#f1fff8;
+  font-size:15px;
+  font-weight:600;
+  line-height:1.5;
+  white-space:nowrap;
+  text-decoration:none;
+}
+#insights .insights-explore:hover{color:#b2f8d8;background:#074432;text-decoration:none}
+#insights .insights-explore:focus-visible{outline:2px solid #147753;outline-offset:4px}

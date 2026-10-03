@@ -11,7 +11,7 @@ const articles = [
   ['https://vishwalab.com/blogDetail?slug=selective-disclosure', 'article-document.webp', 'BLOG', 'Why Selective Disclosure Is the Next Primitive'],
 ];
 
-export default function Insights({ onDialog }) {
+export default function Insights() {
   return (
     <section id="insights" className="section with-edges">
       <div className="wrap">
@@ -44,7 +44,9 @@ export default function Insights({ onDialog }) {
           ))}
         </div>
         <div className="actions">
-          <button className="button dark" onClick={() => onDialog('insights-library')}>Explore insights and use cases <span aria-hidden="true">→</span></button>
+          <a className="insights-explore" href="https://vishwalab.com/blog" target="_blank" rel="noopener noreferrer">
+            Explore more insights <span aria-hidden="true">→</span>
+          </a>
         </div>
       </div>
     </section>
