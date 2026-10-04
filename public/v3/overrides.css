@@ -271,7 +271,9 @@
    scene laid out as a readable grid, every card at full opacity), so the fix is
    simply to NOT re-pin here and let that base layout win. */
 
-/* One full-click-target CTA, with its arrow and no text underline. */
+/* Separate podcast and article destinations; keep each label on one line. */
+#insights .insights-actions{flex-wrap:wrap;gap:16px}
+
 #insights .insights-explore{
   display:inline-flex;
   align-items:center;

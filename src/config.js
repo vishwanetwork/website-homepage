@@ -2,7 +2,7 @@
 export const CONTACT_EMAIL = 'official@vishwalab.com';
 
 // "Talk to us" form URL
-export const TYPEFORM_URL = 'https://form.typeform.com/to/IjCOn4nY';
+export const TYPEFORM_URL = 'https://form.typeform.com/to/pAGm9NE2';
 
 // "Request a demo" form URL
 export const DEMO_URL = 'https://form.typeform.com/to/pAGm9NE2';

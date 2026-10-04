@@ -43,7 +43,10 @@ export default function Insights() {
             </a>
           ))}
         </div>
-        <div className="actions">
+        <div className="actions insights-actions">
+          <a className="insights-explore" href="https://vishwalab.com/podcast" target="_blank" rel="noopener noreferrer">
+            Explore more podcasts <span aria-hidden="true">→</span>
+          </a>
           <a className="insights-explore" href="https://vishwalab.com/blog" target="_blank" rel="noopener noreferrer">
             Explore more insights <span aria-hidden="true">→</span>
           </a>

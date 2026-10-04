@@ -107,12 +107,12 @@
     var lastPercent = -1;
     var disposed = false;
     var api;
-    // Keep the caption above the card when fonts or viewport size change.
+    // Keep the rejection caption above REQUEST B as its content size changes.
     function measureCard() {
-      style.setProperty('--vg-a-half-height', anchors[0].offsetHeight / 2 + 'px');
+      style.setProperty('--vg-b-half-height', anchors[2].offsetHeight / 2 + 'px');
     }
     var cardObserver = new ResizeObserver(measureCard);
-    cardObserver.observe(anchors[0]);
+    cardObserver.observe(anchors[2]);
     measureCard();
 
     function set(name, n, suffix) { style.setProperty('--vg-' + name, Number(n).toFixed(4) + (suffix || '')); }
