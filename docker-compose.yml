@@ -3,7 +3,7 @@ services:
     build:
       context: .
     platform: linux/amd64
-    container_name: website-060928
-    image: vishwanetwork/website-060928:latest
+    container_name: website-homepage
+    image: vishwanetwork/website-homepage:latest
     ports:
       - "8090:80"
