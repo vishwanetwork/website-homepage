@@ -7,8 +7,8 @@ const stories = [
 ];
 
 const articles = [
-  ['https://vishwalab.com/podcast', 'podcast.webp', 'PODCAST', 'AI Agents and the Future of Financial Infrastructure'],
-  ['https://vishwalab.com/blogDetail?slug=selective-disclosure', 'article-document.webp', 'BLOG', 'Why Selective Disclosure Is the Next Primitive'],
+  ['https://youtube.com/watch?v=J2k2-LAxLWw&feature=youtu.be', 'podcast.webp', 'PODCAST', 'AI agents and future of financial infrastructure with Fidelity labs'],
+  ['https://vishwalab.com/bankinginfra/blogDetail?slug=selective-disclosure', 'article-document.webp', 'BLOG', 'Why Selective Disclosure Is the Next Primitive'],
 ];
 
 export default function Insights() {
@@ -44,10 +44,10 @@ export default function Insights() {
           ))}
         </div>
         <div className="actions insights-actions">
-          <a className="insights-explore" href="https://vishwalab.com/podcast" target="_blank" rel="noopener noreferrer">
+          <a className="insights-explore" href="https://vishwalab.com/bankinginfra/podcast" target="_blank" rel="noopener noreferrer">
             Explore more podcasts <span aria-hidden="true">→</span>
           </a>
-          <a className="insights-explore" href="https://vishwalab.com/blog" target="_blank" rel="noopener noreferrer">
+          <a className="insights-explore" href="https://vishwalab.com/bankinginfra/blog" target="_blank" rel="noopener noreferrer">
             Explore more insights <span aria-hidden="true">→</span>
           </a>
         </div>

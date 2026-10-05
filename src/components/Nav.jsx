@@ -2,7 +2,7 @@ import React from 'react';
 import { TYPEFORM_URL } from '../config.js';
 
 const links = [
-  { href: 'https://vishwalab.com/', label: 'Banking Infrastructure', external: true },
+  { href: 'https://vishwalab.com/bankinginfra', label: 'Banking Infrastructure', external: true },
   { href: 'https://vetagate.com/', label: 'Veta', external: true },
   { href: 'https://open-next.ai', label: 'OpenNEXT', external: true },
   { href: 'https://vault.vishwalab.com/', label: 'AI Vault', external: true },

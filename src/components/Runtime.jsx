@@ -17,7 +17,7 @@ export default function Runtime() {
           <p className="subtitle">Financial agents move capital. Resource agents source and settle compute.<br />Vishwa governs both through the same policy, proof, and settlement layer.</p>
         </div>
         <div className="finance-grid">
-          <a className="finance-card" href="https://vishwalab.com" target="_blank" rel="noopener noreferrer">
+          <a className="finance-card" href="https://vishwalab.com/bankinginfra" target="_blank" rel="noopener noreferrer">
             <Icon name="bank" />
             <div><small>FINANCIAL AGENTS</small><h3>Agentic Native Banking Infra</h3><p>Treasury · Payments · Credit · Vaults</p></div>
           </a>
@@ -41,7 +41,7 @@ export default function Runtime() {
             <header>
               <Icon name="chart" />
               <h4>AGENT-VETTED GPU INDEX</h4>
-              <a href="/opennext-index-factory.html" target="_blank" rel="noopener noreferrer">View GPU Index <span aria-hidden="true">→</span></a>
+              <a href="/opennext-index-factory.html" target="_blank" rel="noopener noreferrer">View Agent Vetted GPU Index <span aria-hidden="true">→</span></a>
             </header>
             <div className="market-stats">
               {marketStats.map(([label, value, unit, delta, dir]) => (

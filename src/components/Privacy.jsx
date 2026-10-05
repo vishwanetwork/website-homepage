@@ -53,7 +53,7 @@ export default function Privacy() {
             ))}
             <div className="chips"><span>Encrypted state</span><span>Permissioned disclosure</span><span>Verifiable handoff</span></div>
             <p className="fineprint">Privacy-preserving verification provides stronger assurance without revealing sensitive state.</p>
-            <a className="button dark" href="https://vishwalab.com/blogDetail?slug=selective-disclosure" target="_blank" rel="noopener noreferrer">Explore the Privacy Architecture <span aria-hidden="true">→</span></a>
+            <a className="button dark" href="https://vishwalab.com/bankinginfra/blogDetail?slug=selective-disclosure" target="_blank" rel="noopener noreferrer">Explore the Privacy Architecture <span aria-hidden="true">→</span></a>
           </div>
         </div>
         <div className="strap dark-panel">

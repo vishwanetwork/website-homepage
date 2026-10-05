@@ -11,8 +11,8 @@ const columns = [
   {
     label: 'RESOURCES',
     links: [
-      ['Blog', 'https://vishwalab.com/blog', true],
-      ['Podcast', 'https://vishwalab.com/podcast', true],
+      ['Blog', 'https://vishwalab.com/bankinginfra/blog', true],
+      ['Podcast', 'https://vishwalab.com/bankinginfra/podcast', true],
     ],
   },
 ];

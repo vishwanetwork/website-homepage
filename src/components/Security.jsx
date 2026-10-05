@@ -39,7 +39,6 @@ export default function Security({ onDialog }) {
           <div>
             <p><Icon name="file" /><span>Selected for Anthropic’s Cyber Verification Program.<small>Program participation — not a security certification.</small></span></p>
             <p><Icon name="file" /><span>Selected for a Plug and Play accelerator program.<small>Fall 2026 cohort.</small></span></p>
-            <button onClick={() => onDialog('programs')}>Official program announcement ↗</button>
           </div>
         </div>
         <div className="security-flow dark-panel">

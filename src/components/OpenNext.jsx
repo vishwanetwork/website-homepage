@@ -90,7 +90,7 @@ export default function OpenNext({ onDialog }) {
           </div>
           <div className="actions actions-gpu">
             <a className="button cyan" href={DEMO_URL} target="_blank" rel="noopener noreferrer">Request a demo <span aria-hidden="true">→</span></a>
-            <a className="button dark" href="/opennext-index-factory.html" target="_blank" rel="noopener noreferrer">View GPU Index <span aria-hidden="true">→</span></a>
+            <a className="button dark" href="/opennext-index-factory.html" target="_blank" rel="noopener noreferrer">View Agent Vetted GPU Index <span aria-hidden="true">→</span></a>
           </div>
           <div className="dashboard-caption">Intent → policy → approved compute → settlement.</div>
         </div>
