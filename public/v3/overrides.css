@@ -289,3 +289,17 @@
 }
 #insights .insights-explore:hover{color:#b2f8d8;background:#074432;text-decoration:none}
 #insights .insights-explore:focus-visible{outline:2px solid #147753;outline-offset:4px}
+
+/* Preserve the lens height; bring the adjacent heading and controls closer. */
+@media(min-width:761px){
+  .vx-compute-pin{min-height:1200px}
+  .vx-compute-intro{transform:translateY(48px)}
+  .vx-compute-controls{transform:translateY(-80px)}
+}
+
+/* Widen the policy step for its two lines without changing card alignment. */
+@media(min-width:761px){
+  .vx-mode .vx-compute-story .compute-dashboard{width:1430px;margin-left:-715px}
+  .vx-mode .vx-compute-story .compute-dashboard .pipeline{grid-template-columns:1fr max-content 1fr 1fr 1fr}
+  .vx-mode .vx-compute-story .compute-dashboard .pipeline>div:nth-child(2)>span>span{white-space:nowrap}
+}

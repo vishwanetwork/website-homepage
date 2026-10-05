@@ -19,15 +19,19 @@ const constraints = [
 ];
 
 const evidence = [
-  ['database', 'BUDGET'], ['pin', 'APPROVED REGION'],
+  ['database', 'BUDGET'], ['pin', 'REGION POLICY'],
   ['shield', 'PROVIDER SLA'], ['database', 'AVAILABILITY'],
 ];
 
 const providers = [
-  ['globe', 'Provider A', 'Singapore, SG'],
-  ['cube', 'Provider B', 'Tokyo, JP'],
-  ['servers', 'Provider C', 'Seattle, US'],
+  { icon: 'globe', name: 'Runpod', gpuLabel: 'H100 SXM', vramGB: 80, usdPerGpuHour: 3.49, sourceUrl: 'https://www.runpod.io/pricing' },
+  { icon: 'cube', name: 'Verda', gpuLabel: 'H100 SXM5', vramGB: 80, usdPerGpuHour: 3.77, sourceUrl: 'https://verda.com/pricing?currency=usd' },
+  { icon: 'servers', name: 'Lambda', gpuLabel: 'H100 SXM', vramGB: 80, usdPerGpuHour: 4.29, sourceUrl: 'https://lambda.ai/pricing' },
 ];
+
+const money = value => `$${value.toFixed(2)}`;
+const quotedProviderCount = new Set(providers.map(provider => provider.name)).size;
+const h100From = Math.min(...providers.map(provider => provider.usdPerGpuHour));
 
 export default function OpenNext({ onDialog }) {
   return (
@@ -47,8 +51,8 @@ export default function OpenNext({ onDialog }) {
           <div className="compute-body">
             <svg className="routing-lines" aria-hidden="true"></svg>
             <div className="intent-card">
-              <h3>ILLUSTRATIVE REQUEST</h3>
-              <p>Need 256 H100s in Singapore for 90 days. Prioritize availability, SLA and total cost.</p>
+              <h3>COMPUTE REQUEST</h3>
+              <p>Compare H100 GPU pricing across providers. Prioritize memory, service terms and compute cost.</p>
               <span>➤</span>
             </div>
             <div className="constraint-list">
@@ -59,31 +63,31 @@ export default function OpenNext({ onDialog }) {
             <div className="resource-hub">
               <Icon name="cube" /><b>RESOURCE<br />AGENTS</b>
               <div className="policy-evidence">
-                <h3>POLICY EVIDENCE</h3>
-                {evidence.map(([icon, label], i) => (<div key={label + i}><Icon name={icon} /><span>{label}</span><b>✓</b></div>))}
+                <h3>POLICY CRITERIA</h3>
+                {evidence.map(([icon, label], i) => (<div key={label + i}><Icon name={icon} /><span>{label}</span><b aria-hidden="true">○</b></div>))}
               </div>
             </div>
             <div className="provider-list">
-              <h3>PROVIDER MATCHES</h3>
-              {providers.map(([icon, name, loc]) => (
+              <h3>PUBLIC GPU OFFERS</h3>
+              {providers.map(({ icon, name, gpuLabel, vramGB, usdPerGpuHour, sourceUrl }) => (
                 <article key={name}>
                   <Icon name={icon} />
-                  <div><b>{name}</b><small>⌖ {loc}</small></div>
-                  <span className="sample-label">ILLUSTRATIVE<br />DATA</span>
+                  <div><b>{name}</b><small>{gpuLabel} · 1 GPU</small></div>
+                  <span className="sample-label"><a href={sourceUrl} target="_blank" rel="noopener noreferrer" aria-label={`${name} official pricing`}>SOURCE ↗</a></span>
                   <div className="provider-metrics">
-                    <span>Availability<br /><b>ILLUSTRATIVE DATA</b></span>
-                    <span>Hourly Price<br /><b>ILLUSTRATIVE DATA</b></span>
+                    <span>VRAM<b>{vramGB} GB</b></span>
+                    <span>USD / GPU-hr<b>{money(usdPerGpuHour)}</b></span>
                   </div>
                 </article>
               ))}
             </div>
             <div className="gpu-index">
-              <header><Icon name="chart" /><h3>GPU INDEX</h3><span className="sample-label">ILLUSTRATIVE DATA</span></header>
-              <p>Availability · Price · Performance</p>
+              <header><Icon name="chart" /><h3>GPU PRICES</h3></header>
+              <p>Public quotes · USD / GPU-hour</p>
               <div className="gpu-metrics">
-                <div><b>ILLUSTRATIVE<br />DATA</b><span>GPUs online</span></div>
-                <div><b>ILLUSTRATIVE<br />DATA</b><span>Avg. price (H100)</span></div>
-                <div><b>ILLUSTRATIVE<br />DATA</b><span>Avg. performance</span></div>
+                <div><b>{quotedProviderCount}</b><span>Quoted Providers</span></div>
+                <div><b>{money(h100From)}</b><span>H100 From</span></div>
+                <div><b>80 GB</b><span>H100 VRAM</span></div>
               </div>
               <img className="gpu-chart-img" src="/assets/icons/gpu-price-chart.svg" alt="Illustrative GPU price trends. Example curves, not live market prices." loading="lazy" decoding="async" />
             </div>

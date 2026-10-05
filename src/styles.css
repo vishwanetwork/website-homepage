@@ -255,3 +255,10 @@ section[id],div[id]{scroll-margin-top:20px}
 
 /* Nudge EVALUATION node up on PC so it sits on the orbit ring, not below it */
 @media(min-width:761px){.orbit-3{bottom:10%}}
+
+/* OpenNEXT public quotes: align metric pairs without changing the chart or motion. */
+#opennext .provider-metrics{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
+#opennext .provider-metrics>span{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:0;text-align:center;line-height:1.25}
+#opennext .provider-metrics>span>b{display:block;margin:0;line-height:1.2}
+#opennext .provider-list .sample-label a{color:inherit;text-decoration:none}
+#opennext .gpu-metrics>div>b{margin-bottom:3px}
