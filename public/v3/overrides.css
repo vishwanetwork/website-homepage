@@ -42,12 +42,11 @@
 .vx-trust-scene .recognition .trusted-logos img[alt="Solana"]{max-width:72px;height:64px}
 .vx-trust-scene .recognition .trusted-wordmark{color:#fff;font-size:32px;font-weight:650}
 
-/* 3. Size each desktop sentence by its content instead of equal-width columns.
-      Stack the sentences on smaller screens rather than squeezing the longer one. */
+/* 3. Keep the three program statements in equal-width columns and let each statement wrap inside its column. */
 .vx-trust-scene .recognition .selected-row{
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  align-items:stretch;
   gap:0;
   width:100%;
   max-width:1190px;
@@ -60,31 +59,28 @@
   box-shadow:0 8px 24px #001b1510;
 }
 .vx-trust-scene .recognition .selected-row>span:not(.trusted-sep){
+  display:flex;
+  align-items:center;
+  justify-content:center;
   border-top:0;
-  padding:10px 12px;
-  flex:1 0 auto;
   min-width:0;
-  white-space:nowrap;
+  padding:10px 12px;
   font-size:clamp(15px,1.1vw,17px);
   font-weight:600;
   line-height:1.6;
   color:#124b36;
   opacity:1;
   text-align:center;
+  white-space:normal;
+  overflow-wrap:anywhere;
 }
-.vx-trust-scene .recognition .selected-row .trusted-sep{
-  display:block;
-  align-self:center;
-  width:1px;
-  height:1.3em;
-  background:currentColor;
-  opacity:.45;
-  flex:0 0 auto;
-}
+.vx-trust-scene .recognition .selected-row>span.recognition-copy+span.recognition-copy{border-left:1px solid #124b3666}
+.vx-trust-scene .recognition .selected-row .trusted-sep{display:none}
 
 @media(min-width:761px) and (max-width:1199px){
-  .vx-trust-scene .recognition .selected-row{flex-direction:column;gap:4px}
-  .vx-trust-scene .recognition .selected-row>span:not(.trusted-sep){flex:0 1 auto;padding:6px 0}
+  .vx-trust-scene .recognition .selected-row{grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
+  .vx-trust-scene .recognition .selected-row>span:not(.trusted-sep){flex:initial;padding:10px 8px;white-space:normal}
+  .vx-trust-scene .recognition .selected-row>span.recognition-copy+span.recognition-copy{border-left:1px solid #124b3666}
   .vx-trust-scene .recognition .selected-row .trusted-sep{display:none}
 }
 
@@ -102,9 +98,10 @@
     margin-left:0;
     grid-column:auto;
   }
-  /* Mobile stacks the two sentences so neither is clipped, and hides the rule. */
-  .vx-trust-scene .recognition .selected-row{flex-direction:column;gap:6px;margin-top:22px}
-  .vx-trust-scene .recognition .selected-row>span:not(.trusted-sep){padding:8px 0;font-size:15px;line-height:1.5;flex:0 1 auto;white-space:normal}
+  /* Mobile stacks the three equal statements so neither is clipped. */
+  .vx-trust-scene .recognition .selected-row{grid-template-columns:1fr;gap:6px;margin-top:22px}
+  .vx-trust-scene .recognition .selected-row>span:not(.trusted-sep){padding:8px 0;font-size:15px;line-height:1.5;flex:initial;white-space:normal}
+  .vx-trust-scene .recognition .selected-row>span.recognition-copy+span.recognition-copy{border-left:0;border-top:1px solid #124b3666}
   .vx-trust-scene .recognition .trusted-logos img{max-width:126px;height:42px}
   .vx-trust-scene .recognition .trusted-logos img[alt="Pharos"]{max-width:48px;height:52px}
   .vx-trust-scene .recognition .trusted-logos img[alt="Solana"]{max-width:54px;height:48px}

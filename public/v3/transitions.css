@@ -14,8 +14,8 @@
 .vx-trust-scene .trusted-logos img{display:block;width:100%;max-width:118px;height:44px;max-height:none;object-fit:contain;opacity:.92;filter:grayscale(1) brightness(0) invert(calc(1 - var(--vt-light)))}
 .vx-trust-scene .trusted-logos img[alt="BitGo"],.vx-trust-scene .trusted-logos img[alt="Pharos"],.vx-trust-scene .trusted-logos img[alt="Solana"]{max-width:46px}
 .vx-trust-scene .trusted-wordmark{font-size:29px;font-weight:550;color:inherit;letter-spacing:-.035em}
-.vx-trust-scene .selected-row{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch;margin-top:44px;opacity:var(--vt-programs,0);transform:translateY(calc((1 - var(--vt-programs,0)) * 18px))}
-.vx-trust-scene .selected-row>span:not(.trusted-sep){padding:22px 10px;border-top:1px solid currentColor;font-size:13px;line-height:1.7;color:inherit;opacity:.7;text-align:center;max-width:none}.vx-trust-scene .trusted-sep{display:none}
+.vx-trust-scene .selected-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;align-items:stretch;margin-top:44px;opacity:var(--vt-programs,0);transform:translateY(calc((1 - var(--vt-programs,0)) * 18px))}
+.vx-trust-scene .selected-row>span:not(.trusted-sep){padding:22px 10px;border-top:1px solid currentColor;font-size:13px;line-height:1.7;color:inherit;opacity:.7;text-align:center;max-width:none;min-width:0;white-space:normal;overflow-wrap:anywhere}.vx-trust-scene .selected-row>span.recognition-copy+span.recognition-copy{border-left:1px solid currentColor}.vx-trust-scene .trusted-sep{display:none}
 .vx-trust-scene:before{content:"THE ECOSYSTEM / 04";position:absolute;top:18%;font:10px var(--mono,monospace);letter-spacing:.16em;color:inherit;opacity:.55}
 .vx-mode .vx-stage .vx-canvas{opacity:var(--vt-canvas,1)}
 .vx-mode .vx-hero-bottom{opacity:var(--vt-bottom,1)}

@@ -55,9 +55,9 @@ export default function Hero() {
           </div>
         </div>
         <div className="recognition-row selected-row">
-          <span>Selected for Anthropic’s Cyber Verification Program.</span>
-          <span className="trusted-sep" aria-hidden="true"></span>
-          <span>Selected for a Plug and Play accelerator program. Fall 2026 cohort.</span>
+          <span className="recognition-copy">Selected for Anthropic’s Cyber Verification Program.</span>
+          <span className="recognition-copy">Selected for a Plug and Play accelerator program. Fall 2026 cohort.</span>
+          <span className="recognition-copy">Part of Circle Alliance Program.</span>
         </div>
       </div>
     </>

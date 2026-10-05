@@ -40,8 +40,8 @@ export default function Runtime() {
           <div className="compute-market">
             <header>
               <Icon name="chart" />
-              <h4>AGENT-VETTED GPU INDEX</h4>
-              <a href="/opennext-index-factory.html" target="_blank" rel="noopener noreferrer">View Agent Vetted GPU Index <span aria-hidden="true">→</span></a>
+              <h4>GPU Market Data Screened by AI Agents</h4>
+              <a href="/opennext-index-factory.html" target="_blank" rel="noopener noreferrer">View GPU Index <span aria-hidden="true">→</span></a>
             </header>
             <div className="market-stats">
               {marketStats.map(([label, value, unit, delta, dir]) => (

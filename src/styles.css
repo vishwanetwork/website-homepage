@@ -177,18 +177,19 @@ section[id],div[id]{scroll-margin-top:20px}
 
 /* Hero recognition: two stacked rows (logos, then selected lines) */
 .recognition{flex-direction:column;align-items:center;gap:22px}
-.recognition .recognition-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:clamp(18px,3vw,40px);width:100%}
+.recognition .recognition-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0;width:100%}
 .recognition .selected-row{font-size:15px;color:#747774;padding-top:22px;border-top:2px solid var(--green);flex-wrap:nowrap}
-.recognition .selected-row span{white-space:nowrap}
-.recognition .selected-row span+span{border-left:0;padding-left:0}
-.recognition .selected-row .trusted-sep{width:1px;min-height:18px;background:#c3c3ba}
+.recognition .selected-row .recognition-copy{flex:1 1 0;min-width:0;padding:0 clamp(10px,2vw,28px);text-align:center;white-space:normal;overflow-wrap:anywhere;line-height:1.45}
+.recognition .selected-row .recognition-copy+.recognition-copy{border-left:1px solid #c3c3ba}
+.recognition .selected-row .trusted-sep{display:none}
 
 
 /* ===== Mobile-only fixes (<=760px), desktop untouched ===== */
 @media(max-width:760px){
-  /* 图一: TRUSTED BY 的两句 Selected 允许换行、竖排，隐藏中间竖线 */
+  /* 图一: TRUSTED BY 下方三段文案在手机端改为纵向排列，避免列宽过窄 */
   .recognition .selected-row{flex-wrap:wrap;flex-direction:column;gap:8px;text-align:center;padding-top:16px;font-size:12px;line-height:1.45}
-  .recognition .selected-row span{white-space:normal}
+  .recognition .selected-row .recognition-copy{flex:0 1 auto;width:100%;padding:0 10px;white-space:normal}
+  .recognition .selected-row .recognition-copy+.recognition-copy{border-left:0}
   .recognition .selected-row .trusted-sep{display:none}
 
   /* 图二: COMPUTE COORDINATION 标题与图标不再溢出卡片 */
