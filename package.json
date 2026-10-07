@@ -3,21 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "engines": { "node": ">=18" },
   "scripts": {
     "dev": "node scripts/build.mjs && node scripts/serve.mjs",
     "build": "node scripts/build.mjs",
     "build:preview": "node scripts/build.mjs --preview",
     "start": "node scripts/serve.mjs",
-    "preview": "node scripts/serve.mjs",
-    "legacy:dev": "vite",
-    "legacy:build": "vite build"
-  },
-  "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^4.3.4",
-    "vite": "^5.4.11"
+    "preview": "node scripts/serve.mjs"
   }
 }
