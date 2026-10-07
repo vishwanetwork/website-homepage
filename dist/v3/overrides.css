@@ -1,0 +1,305 @@
+/* V3 integration fixes. Loaded last so it wins over the reference stylesheets.
+   Visual only: no link target, button handler or dialog behaviour is changed. */
+
+/* 1. Nav "Talk to us" matches V3: mint fill on the base 6px radius, not a pill.
+      V3 only recolours the button and inherits the base .button radius. */
+.vx-mode .nav .button.dark,
+.vx-mode .nav .button{
+  background:#b2f8d8;
+  color:#032417;
+  border:1px solid #b2f8d8;
+  border-radius:6px;
+}
+.vx-mode .nav .button.dark:hover,
+.vx-mode .nav .button:hover{background:#c9ffe6;border-color:#c9ffe6;color:#032417}
+
+/* 2. The reference sizes tiles as 5 fluid columns with a fixed 150px height, so
+      dropping BitGo narrows each column and turns the tiles into vertical bars.
+      Pin every tile to the original 222x150 box instead and centre the row. */
+.vx-trust-scene .trusted-logos{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  grid-template-columns:none;
+  gap:18px;
+}
+.vx-partner{width:220px;height:150px;flex:0 0 auto}
+/* Keep white artwork on a solid dark tile throughout the background transition. */
+.vx-trust-scene .vx-partner{
+  background:#073b2c;
+  border-color:#39846b;
+  color:#f1fff8;
+  box-shadow:0 12px 32px #001b1526;
+  backdrop-filter:none;
+}
+.vx-trust-scene .recognition .trusted-logos img{
+  max-width:170px;
+  height:56px;
+  opacity:1;
+  filter:brightness(0) invert(1);
+}
+.vx-trust-scene .recognition .trusted-logos img[alt="Pharos"]{max-width:64px;height:68px}
+.vx-trust-scene .recognition .trusted-logos img[alt="Solana"]{max-width:72px;height:64px}
+.vx-trust-scene .recognition .trusted-wordmark{color:#fff;font-size:32px;font-weight:650}
+
+/* 3. Keep the three program statements in equal-width columns and let each statement wrap inside its column. */
+.vx-trust-scene .recognition .selected-row{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  align-items:stretch;
+  gap:0;
+  width:100%;
+  max-width:1190px;
+  margin:28px auto 0;
+  padding:12px;
+  background:#f1faf5;
+  border:1px solid #b8d8c8;
+  border-top:3px solid #147753;
+  border-radius:8px;
+  box-shadow:0 8px 24px #001b1510;
+}
+.vx-trust-scene .recognition .selected-row>span:not(.trusted-sep){
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-top:0;
+  min-width:0;
+  padding:10px 12px;
+  font-size:clamp(15px,1.1vw,17px);
+  font-weight:600;
+  line-height:1.6;
+  color:#124b36;
+  opacity:1;
+  text-align:center;
+  white-space:normal;
+  overflow-wrap:anywhere;
+}
+.vx-trust-scene .recognition .selected-row>span.recognition-copy+span.recognition-copy{border-left:1px solid #124b3666}
+.vx-trust-scene .recognition .selected-row .trusted-sep{display:none}
+
+@media(min-width:761px) and (max-width:1199px){
+  .vx-trust-scene .recognition .selected-row{grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
+  .vx-trust-scene .recognition .selected-row>span:not(.trusted-sep){flex:initial;padding:10px 8px;white-space:normal}
+  .vx-trust-scene .recognition .selected-row>span.recognition-copy+span.recognition-copy{border-left:1px solid #124b3666}
+  .vx-trust-scene .recognition .selected-row .trusted-sep{display:none}
+}
+
+@media(max-width:760px){
+  /* Two tiles per row, all the same size. The site's base .trusted-logos gap
+     (22px) outranks a plain override here, so match its specificity; 2x174+22
+     overflowed the 358px container, which is what forced one tile per row. */
+  .vx-trust-scene .recognition .trusted-logos{gap:10px;row-gap:10px}
+  .vx-trust-scene .recognition .vx-partner,
+  .vx-trust-scene .recognition .vx-partner:nth-child(n+4){
+    width:calc(50% - 5px);
+    height:104px;
+    box-sizing:border-box;
+    flex:0 0 calc(50% - 5px);
+    margin-left:0;
+    grid-column:auto;
+  }
+  /* Mobile stacks the three equal statements so neither is clipped. */
+  .vx-trust-scene .recognition .selected-row{grid-template-columns:1fr;gap:6px;margin-top:22px}
+  .vx-trust-scene .recognition .selected-row>span:not(.trusted-sep){padding:8px 0;font-size:15px;line-height:1.5;flex:initial;white-space:normal}
+  .vx-trust-scene .recognition .selected-row>span.recognition-copy+span.recognition-copy{border-left:0;border-top:1px solid #124b3666}
+  .vx-trust-scene .recognition .trusted-logos img{max-width:126px;height:42px}
+  .vx-trust-scene .recognition .trusted-logos img[alt="Pharos"]{max-width:48px;height:52px}
+  .vx-trust-scene .recognition .trusted-logos img[alt="Solana"]{max-width:54px;height:48px}
+  .vx-trust-scene .recognition .selected-row .trusted-sep{display:none}
+}
+
+
+/* 5. Restore the scroll-through tunnel on phones.
+      The reference pins the hero to a single screen (.vx-mode .vx-hero) and forces
+      the copy visible, removing the scroll runway the effect needs. Selectors here
+      match that specificity so they actually apply. Shorter runway than desktop. */
+@media(max-width:760px){
+  .vx-mode .vx-hero{height:220svh;min-height:0}
+  .vx-mode .vx-hero .vx-stage,
+  .vx-stage{height:100svh;min-height:0;position:sticky;top:0}
+  /* The reference hides the chapter copy, the exit wash and the scroll steps on
+     phones, which is why only chapter 1 ever appeared. Bring all three back. */
+  .vx-chapter-copy{display:flex;padding:12vw 7vw}
+  .vx-exit-wash{display:block}
+  .vx-hero-steps{display:flex}
+  .vx-hero-copy{
+    top:50%;
+    translate:0 -47%;
+    transform:translateY(calc(var(--vx-first-shift,0) * -1px))!important;
+    opacity:var(--vx-first,1)!important;
+  }
+  .vx-chapter-copy h2{font-size:clamp(30px,8.2vw,50px);max-width:none}
+  .vx-chapter-copy p{font-size:13.5px;max-width:320px}
+  /* The canvas is the effect itself, so keep it visible while the hero is pinned. */
+  .vx-mode .vx-stage .vx-canvas{opacity:1}
+}
+
+/* Phones that prefer reduced motion keep the original single-screen hero. */
+@media(max-width:760px) and (prefers-reduced-motion:reduce){
+  .vx-mode .vx-hero{height:100svh}
+  .vx-mode .vx-hero .vx-stage,
+  .vx-stage{position:relative}
+  .vx-hero-copy{transform:none!important;opacity:1!important}
+  .vx-trust-scene{--vt-entry:1;--vt-light:1;--vt-programs:1}
+  .vx-partner{--vt-card:1!important}
+}
+
+
+/* transitions.css pins the trust scene on phones (position:relative, opacity:1,
+   --vt-*:1) so it never animates. Restore the scroll-driven entrance, matching the
+   original selector specificity. Desktop is untouched: all of this is inside the
+   mobile media query. */
+@media(max-width:760px){
+  /* transitions.css pins this static on phones (position:relative, opacity:1,
+     --vt-*:1) so it never animates. Restore the base scroll-driven entrance by
+     re-declaring only what the mobile block overrode; layout comes from the base. */
+  .vx-trust-scene{
+    position:absolute;
+    inset:0;
+    opacity:var(--vt-entry,0);
+    transform:translateY(calc((1 - var(--vt-entry,0)) * 48px));
+    pointer-events:none;
+    padding:70px 16px;
+    background:none;
+    --vt-entry:0;
+    --vt-light:0;
+    --vt-programs:0;
+  }
+  .vx-trust-scene.vt-visible{pointer-events:auto}
+  .vx-trust-scene .vx-partner{
+    --vt-card:0;
+    opacity:var(--vt-card,0);
+    transform:translate3d(0,calc((1 - var(--vt-card,0)) * 40px),0);
+  }
+  .vx-trust-scene .recognition .selected-row{
+    opacity:var(--vt-programs,0);
+    transform:translateY(calc((1 - var(--vt-programs,0)) * 14px));
+  }
+}
+
+@media(max-width:760px) and (prefers-reduced-motion:reduce){
+  .vx-trust-scene{position:relative;inset:auto;opacity:1}
+  .vx-trust-scene .vx-partner{opacity:1;transform:none}
+  .vx-trust-scene .recognition .selected-row{opacity:1;transform:none}
+}
+
+/* ---------------------------------------------------------------------------
+   Mobile: restore the three scroll animations (Gate / Compute / Records).
+   The reference flattens all three on phones, so they looked static. Every rule
+   below is inside a max-width:760px query, so desktop is untouched. Phones that
+   ask for reduced motion keep the flattened version further down.
+   --------------------------------------------------------------------------- */
+
+/* Records. continuity.css kills this via (hover:none), which matches every
+   touch device, so the !important flags there have to be answered in kind. */
+@media(max-width:760px) and (prefers-reduced-motion:no-preference){
+  .vc-on .vc-evidence-stage{perspective:900px;perspective-origin:50% 80%}
+  .vc-on #records .record-flow > .vc-evidence-card{
+    rotate:1 0 0 calc(var(--vc-rest,0) * var(--vc-fold-start,0deg))!important;
+    scale:var(--vc-depth-scale,1)!important;
+    opacity:1!important;
+    transition:rotate .12s linear,scale .12s linear,border-color .18s,box-shadow .18s!important;
+    backface-visibility:hidden;
+  }
+  .vc-on #records .vc-ledger-row{
+    opacity:calc(.45 + var(--vc-ready,1) * .55)!important;
+    transition:opacity .16s,background-color .16s,box-shadow .16s!important;
+  }
+  .vc-on :is(.vc-assurance-card,.vc-insight-card,.vc-request,.vc-response){
+    opacity:1!important;
+    scale:var(--vc-depth-scale,1)!important;
+    transition:scale .18s,opacity .18s!important;
+  }
+  .vc-on .vc-assurance-step{
+    opacity:calc(.45 + var(--vc-ready,1) * .55)!important;
+    transition:opacity .16s!important;
+  }
+}
+
+/* Compute. An earlier override re-pinned this story on phones (sticky, 100svh,
+   overflow:hidden, centred) to bring the desktop lens motion back. But the full
+   dashboard is far taller than one screen, so centring + clipping cut off the
+   top (pipeline 01–05 and the intro) once you scrolled past the midpoint — the
+   content "above" became unreachable. The dashboard is too large to pan inside a
+   phone viewport, so restore the reference behaviour: let the whole story flow
+   naturally, unpinned and uncropped, so every part stays readable. A light
+   fade-up entrance keeps some motion without any clipping. */
+@media(max-width:760px){
+  .vx-compute-story{height:auto;min-height:0}
+  .vx-compute-pin{
+    position:relative;
+    top:auto;
+    height:auto;
+    min-height:0;
+    padding:40px 16px 48px;
+    display:block;
+    overflow:visible;
+  }
+  .vx-compute-intro{position:relative;top:auto;left:auto;right:auto}
+  .vx-compute-lens{
+    position:relative;
+    inset:auto;
+    perspective:none;
+    overflow:visible;
+    mask-image:none;
+    margin-top:22px;
+  }
+  .vx-mode .vx-compute-story .compute-dashboard{
+    position:relative;
+    left:auto;
+    top:auto;
+    width:100%;
+    margin:0;
+    padding:16px;
+    transform:none!important;
+  }
+  .vx-mode .vx-compute-story .compute-dashboard .compute-body{min-height:0}
+  /* Keep the two action buttons visible on phones since the story is now a
+     normal readable block rather than a pinned animation. */
+  .vx-compute-story .compute-dashboard .actions{display:flex}
+}
+
+/* Gate. An earlier override re-pinned this story into a single phone screen
+   (sticky, 100svh, overflow:hidden) and forced all three title phases to render
+   at once, crossfading by opacity. On a phone that crammed the heading, the gate,
+   the six checks and both request cards into one viewport, so the three titles
+   overlapped as a translucent blur and the cards stacked on top of each other.
+   gate-story.css already ships a clean, unpinned mobile layout (one title shown,
+   scene laid out as a readable grid, every card at full opacity), so the fix is
+   simply to NOT re-pin here and let that base layout win. */
+
+/* Separate podcast and article destinations; keep each label on one line. */
+#insights .insights-actions{flex-wrap:wrap;gap:16px}
+
+#insights .insights-explore{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  padding:12px 24px;
+  border:1px solid #0b6248;
+  border-radius:6px;
+  background:#032b21;
+  color:#f1fff8;
+  font-size:15px;
+  font-weight:600;
+  line-height:1.5;
+  white-space:nowrap;
+  text-decoration:none;
+}
+#insights .insights-explore:hover{color:#b2f8d8;background:#074432;text-decoration:none}
+#insights .insights-explore:focus-visible{outline:2px solid #147753;outline-offset:4px}
+
+/* Preserve the lens height; bring the adjacent heading and controls closer. */
+@media(min-width:761px){
+  .vx-compute-pin{min-height:1200px}
+  .vx-compute-intro{transform:translateY(48px)}
+  .vx-compute-controls{transform:translateY(-80px)}
+}
+
+/* Widen the policy step for its two lines without changing card alignment. */
+@media(min-width:761px){
+  .vx-mode .vx-compute-story .compute-dashboard{width:1430px;margin-left:-715px}
+  .vx-mode .vx-compute-story .compute-dashboard .pipeline{grid-template-columns:1fr max-content 1fr 1fr 1fr}
+  .vx-mode .vx-compute-story .compute-dashboard .pipeline>div:nth-child(2)>span>span{white-space:nowrap}
+}

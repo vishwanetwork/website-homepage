@@ -1,18 +1,19 @@
-# dependencies
 node_modules/
-
-# build output
-dist/
-
-# logs
-*.log
-npm-debug.log*
-
-# editor / OS
-.DS_Store
-.vscode/
-.idea/
-
-# env
+.openai/
+.codex/
+.aws/
 .env
 .env.*
+!.env.example
+qa/
+archives/
+work/
+outputs/
+coverage/
+.cache/
+*.log
+*.tmp
+*.zip
+.DS_Store
+Thumbs.db
+Desktop.ini

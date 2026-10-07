@@ -1,0 +1,54 @@
+{
+  "component": "partials/compute.html",
+  "reviewDate": "2026-10-07",
+  "scope": "Published on-demand prices and documented service geography, not an inventory guarantee. Catalog prices are not live region-specific deployment quotes.",
+  "frontend": {
+    "showDate": false,
+    "showProviderNames": false,
+    "showSourceLabels": false,
+    "linksRemainClickable": false,
+    "note": "Published rates. GPU options and availability vary by region."
+  },
+  "offers": [
+    {
+      "internalProvider": "Runpod",
+      "displayRegion": "India",
+      "displayLocation": "AP-IN-1",
+      "model": "H100 SXM",
+      "vramGB": 80,
+      "usdPerGpuHour": 3.49,
+      "pricingSource": "https://www.runpod.io/pricing",
+      "locationSource": "https://www.runpod.io/blog/new-runpod-datacenter-now-live-ap-in-1",
+      "basis": "Secure Cloud on-demand Pod catalog. Official AP-IN-1 announcement identifies India and deployment of H100 80GB HBM3 GPUs, with console steps for that GPU and region.",
+      "limit": "The pricing page supplies a general Secure Cloud rate, not a live inventory count or guaranteed AP-IN-1 reservation."
+    },
+    {
+      "internalProvider": "Verda",
+      "displayRegion": "Finland",
+      "displayLocation": "Helsinki",
+      "model": "H100 SXM5",
+      "vramGB": 80,
+      "usdPerGpuHour": 3.81,
+      "previousUsdPerGpuHour": 3.77,
+      "pricingSource": "https://verda.com/pricing?currency=usd",
+      "locationSource": "https://docs.verda.com/welcome-to-verda/locations-and-sustainability/",
+      "modelLocationSupportingSource": "https://forum.verda.com/t/availability-of-h100-and-2-vcpu-private-image-for-os/49",
+      "basis": "Fresh HTML from the USD pricing page lists one H100 SXM5 with 80 GB VRAM, 30 CPUs and 120 GB RAM at 3.81 USD/hour. The official locations documentation identifies FIN-01, FIN-02 and FIN-03 in Helsinki, Finland. The Verda team forum confirms H100 deployment in FIN-02.",
+      "pricingRowExcerpt": "1x H100 SXM5 80GB 30 120 GB 80 GB $3.81/h $1.91/h",
+      "limit": "The first price is on-demand and the second is spot. The older search-cached H100 landing page showed a different converted price; the fresh USD pricing-table value takes precedence."
+    },
+    {
+      "internalProvider": "Lambda",
+      "displayRegion": "Global regions",
+      "displayLocation": "Multi-region cloud",
+      "model": "H100 SXM",
+      "vramGB": 80,
+      "usdPerGpuHour": 4.29,
+      "pricingSource": "https://lambda.ai/pricing",
+      "locationSource": "https://docs.lambda.ai/public-cloud/on-demand/",
+      "basis": "Official one-GPU pricing table lists H100 SXM with 80 GB VRAM at 4.29 USD/GPU-hour. Official service documentation lists physical cloud locations in North America, Europe, Asia and the Middle East and explains that instance types vary by region.",
+      "limit": "No current public one-to-one mapping between this one-GPU SXM price and one specific country was established, so the card uses Global regions rather than inventing a country or using the headquarters address."
+    }
+  ],
+  "policyVisual": "Conceptual agent-routing illustration: an AI agent routes a request through Budget, Region and SLA checks to approved supply. No live pass state, inventory check, booking or completed execution is claimed."
+}

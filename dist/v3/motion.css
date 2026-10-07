@@ -1,0 +1,78 @@
+/* Vishwa motion layer — V3 layout-preserving repair. No dependency.
+   Motion styles must not override the source layout's position/transform.
+   In particular, the six .orbit-node elements stay absolutely positioned. */
+:root{--vm-ease:cubic-bezier(.22,1,.36,1);--vm-cyan:#00dfc0;--vm-green:#005c4c}
+html.vm-on{scroll-behavior:smooth}
+.vm-on .reveal{opacity:1!important;transform:none!important;transition:none!important}
+.vm-on [data-vm-reveal]{transition:opacity .7s var(--vm-ease),translate .7s var(--vm-ease);transition-delay:var(--vm-delay,0ms)}
+.vm-on [data-vm-reveal]:not(.vm-seen){opacity:0;translate:0 18px}
+.vm-on .vm-seen{opacity:1;translate:0 0}
+.vm-on .hero h1{animation:vm-title .95s var(--vm-ease) both;animation-delay:.08s}
+.vm-on .hero .eyebrow{animation:vm-rise .75s var(--vm-ease) both}
+.vm-on .hero h2{animation:vm-rise .85s var(--vm-ease) .16s both}
+.vm-on .hero .hero-copy{animation:vm-rise .85s var(--vm-ease) .24s both}
+.vm-on .hero .actions{animation:vm-rise .85s var(--vm-ease) .32s both}
+.vm-on .hero .execution-strip{animation:vm-rise 1s var(--vm-ease) .42s both}
+.vm-on .edge-art img{translate:calc(var(--vm-x,0px) * var(--vm-direction,1)) var(--vm-y,0px);scale:1.025;transition:translate .7s var(--vm-ease);will-change:translate}
+.vm-on .edge-art.right img{--vm-direction:-1}
+.vm-on :is(.privacy-art,.gate-art){translate:0 var(--vm-depth,0px);transition:translate .65s var(--vm-ease)}
+.vm-on :is(.button,.finance-card,.privacy-card,.value-cards article,.security-cards article,.article-card,.signal-grid article){transition:translate .24s var(--vm-ease),box-shadow .24s,border-color .24s,background-color .24s}
+.vm-on :is(.finance-card,.privacy-card,.value-cards article,.security-cards article,.article-card,.signal-grid article):hover{translate:0 -3px;box-shadow:0 12px 34px #0043330b;border-color:#00bca580}
+.vm-on .button:hover{translate:0 -2px;box-shadow:0 7px 22px #00564518}
+.vm-on .button>span{display:inline-block;transition:translate .2s var(--vm-ease)}
+.vm-on .button:hover>span{translate:3px 0}
+.vm-on :is(a,button,summary):focus-visible{outline:2px solid #009e87;outline-offset:5px}
+.vm-on .article-image{transition:scale .7s var(--vm-ease)}
+.vm-on .article-card:hover .article-image{scale:1.025}
+.vm-on :is(.flow-item,.compute-flow>div,.gate-node,.controls>div,.pipeline>div,.orbit-node,.record-flow>article,.security-flow>div){transition:border-color .35s,box-shadow .35s,background-color .35s,color .35s}
+.vm-on .vm-active{border-color:#00e5c8!important;background-color:#00c9ab13!important;box-shadow:inset 0 0 20px #00cdbb13,0 0 18px #00cdbb16}
+.vm-on .vm-active>.icon,.vm-on .vm-active>svg{color:#00e4c5}
+.vm-on .flow-item.vm-active:after{color:#8dffeb!important;filter:drop-shadow(0 0 3px #00eac9)}
+.vm-on .vm-done{border-color:#008d786e!important}
+.vm-on .gate-center{isolation:isolate}
+.vm-on .vm-gate-aura{position:absolute;inset:8% 8%;z-index:-1;border-radius:48%;background:radial-gradient(ellipse,#00d4af30,transparent 64%);opacity:.35;transition:opacity 1s;pointer-events:none}
+.vm-on .vm-gate-pass .vm-gate-aura{opacity:1}
+.vm-on .request-result{transition:box-shadow .6s,border-color .6s}
+.vm-on .vm-gate-pass .authorized{box-shadow:0 0 16px #00dfa522;border-color:#00dbba}
+.vm-on .vm-gate-pass .blocked{box-shadow:0 0 12px #d3887515}
+.vm-on .vm-trail{stroke:#34ffdb;stroke-width:3;stroke-linecap:round;fill:none;stroke-dasharray:9 91;stroke-dashoffset:100;filter:drop-shadow(0 0 2px #00cbbb);animation:vm-path 2.8s linear infinite;animation-delay:var(--vm-delay,0s);animation-play-state:paused;opacity:0}
+.vm-on .vm-in-view .vm-trail{animation-play-state:running;opacity:.9}
+.vm-on .vm-in-view .gate-lines .vm-trail{opacity:0;transition:opacity .3s}
+.vm-on .vm-in-view .gate-lines .vm-trail.vm-flowing{opacity:1}
+.vm-on .privacy-connectors g:first-child{animation:vm-privacy 10s linear infinite;animation-play-state:paused}
+.vm-on .vm-in-view .privacy-connectors g:first-child{animation-play-state:running}
+.vm-on .privacy-node span{transition:box-shadow .5s,scale .5s}
+.vm-on .privacy-node.vm-active span{box-shadow:0 0 0 5px #00d9b015,0 0 28px #00dbb733;scale:1.04}
+.vm-on .orbit-svg{overflow:visible}
+/* Glints follow exact copies of the source's six inner arc paths. The outer
+   institutional-policy boundary, original arrows and node coordinates stay fixed. */
+.vm-on .vm-orbit-motion{pointer-events:none}
+.vm-on .vm-orbit-segment{fill:none;stroke:#b8ffe4;stroke-width:4;stroke-linecap:round;stroke-dasharray:14 100;stroke-dashoffset:var(--vm-orbit-offset,14);opacity:var(--vm-orbit-opacity,0);filter:drop-shadow(0 0 3px #00c99b)}
+.vm-on #improvement .orbit-node.vm-active{border-color:#5effce!important;box-shadow:5px 10px 12px #00342838,0 0 0 2px #02ca9e18,inset 0 0 20px #00dca315,0 0 24px #00cdbb24}
+.vm-on #improvement .orbit-center img{filter:drop-shadow(0 0 calc(4px + var(--vm-orbit-energy,0)*9px) #00c99536)}
+.vm-on .gpu-chart .vm-chart-line{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.6s var(--vm-ease);transition-delay:var(--vm-delay,0ms)}
+.vm-on .vm-in-view .gpu-chart .vm-chart-line{stroke-dashoffset:0}
+.vm-on .vm-panel-frame{transition:box-shadow .6s,border-color .6s}
+.vm-on .vm-panel-frame.vm-active{box-shadow:0 0 0 1px #00d8bc50,inset 0 0 22px #00c9ae0a}
+.vm-on .codebox pre{transition:opacity .28s,translate .28s}
+.vm-on .codebox.vm-code-in pre{animation:vm-code .55s var(--vm-ease) both}
+.vm-on .response-panels .codebox.vm-code-in:nth-child(2) pre{animation-delay:.12s}
+/* Preserve the source ::after endpoint dot; the sweep gets its own decorative layer. */
+.vm-on .light-line:before{content:"";position:absolute;left:0;top:0;width:28%;height:1px;background:linear-gradient(90deg,transparent,#b4ffed,transparent);translate:0 0;animation:vm-sweep 5.8s ease-in-out infinite;animation-play-state:paused;pointer-events:none}
+.vm-on .vm-in-view .light-line:before{animation-play-state:running}
+.vm-on details[open]>:not(summary){animation:vm-rise .3s var(--vm-ease)}
+.vm-on .vm-reading{position:fixed;left:0;right:0;top:0;height:2px;z-index:1000;pointer-events:none;background:#00ba9c;transform:scaleX(var(--vm-progress,0));transform-origin:left}
+.vm-off .vm-reading{display:none}
+.vm-paused *,.vm-paused *:before,.vm-paused *:after{animation-play-state:paused!important}
+.vm-off .vm-trail,.vm-off .vm-orbit-trail,.vm-off .vm-orbit-motion,.vm-off .vm-gate-aura{display:none}
+.vm-off [data-vm-reveal]{opacity:1!important;translate:none!important}
+.vm-off .reveal{opacity:1!important;transform:none!important}
+.vm-off .gpu-chart .vm-chart-line{stroke-dasharray:none;stroke-dashoffset:0}
+@keyframes vm-rise{from{opacity:0;translate:0 16px}to{opacity:1;translate:0 0}}
+@keyframes vm-title{from{opacity:0;translate:0 26px;filter:blur(3px)}to{opacity:1;translate:0 0;filter:blur(0)}}
+@keyframes vm-path{to{stroke-dashoffset:-100}}
+@keyframes vm-privacy{to{stroke-dashoffset:-80}}
+@keyframes vm-sweep{0%,25%{translate:0 0;opacity:0}35%{opacity:1}75%,100%{translate:250% 0;opacity:0}}
+@keyframes vm-code{from{opacity:.3;translate:0 6px}to{opacity:1;translate:0 0}}
+@media(max-width:760px){.vm-on .edge-art img{translate:none;scale:1}.vm-on :is(.privacy-art,.gate-art){translate:none}.vm-on [data-vm-reveal]{transition-duration:.45s}.vm-on [data-vm-reveal]:not(.vm-seen){translate:0 10px}.vm-on .vm-trail,.vm-on .vm-orbit-segment{stroke-width:2;filter:none}.vm-on .hero h1{animation-name:vm-rise}}
+@media(prefers-reduced-motion:reduce){html.vm-on{scroll-behavior:auto}.vm-on *,.vm-on *:before,.vm-on *:after{animation:none!important;transition:none!important}.vm-on [data-vm-reveal]{opacity:1!important;translate:none!important}.vm-on .edge-art img,.vm-on :is(.privacy-art,.gate-art){translate:none!important;scale:1!important}.vm-on .vm-trail,.vm-on .vm-orbit-trail,.vm-on .vm-orbit-motion{display:none}.vm-on #improvement .orbit-center img{filter:none!important}.vm-on .gpu-chart .vm-chart-line{stroke-dashoffset:0}}
