@@ -1,0 +1,74 @@
+<section id="opennext" class="pv-section pc-section" data-pc-component data-pc-active="1">
+  <div class="pc-wrap">
+    <header class="pc-heading pv-reveal">
+      <h2 class="pv-title"><span class="pc-title-line">Agents source compute.</span><br><em>Within your policy.</em></h2>
+      <p class="pv-deck">AI agents compare GPUs, apply your mandate, and coordinate supply.</p>
+    </header>
+
+    <div class="pc-scene pv-reveal">
+      <div class="pc-scene-top">
+        <div class="pc-tabs" role="tablist" aria-label="Compute sourcing stages">
+          <button class="pc-tab" id="pc-tab-intent" type="button" role="tab" aria-selected="true" aria-controls="pc-stage-intent" tabindex="0" data-pc-step="1">Intent</button>
+          <span class="pc-step-line" aria-hidden="true"></span>
+          <button class="pc-tab" id="pc-tab-policy" type="button" role="tab" aria-selected="false" aria-controls="pc-stage-policy" tabindex="-1" data-pc-step="2">Policy</button>
+          <span class="pc-step-line" aria-hidden="true"></span>
+          <button class="pc-tab" id="pc-tab-supply" type="button" role="tab" aria-selected="false" aria-controls="pc-stage-supply" tabindex="-1" data-pc-step="3">Supply</button>
+        </div>
+      </div>
+
+      <div class="pc-stage-area">
+        <div class="pc-stage pc-intent" id="pc-stage-intent" role="tabpanel" aria-labelledby="pc-tab-intent" data-pc-panel="1" tabindex="0">
+          <div class="pc-intent-copy">
+            <h3>Agent Native<br>Compute Market<span class="pc-cursor">.</span></h3>
+            <p>Your agent starts with the compute you need.</p>
+            <button type="button" class="pc-next" data-pc-next="2">Define the boundaries <span aria-hidden="true">↗</span></button>
+          </div>
+          <div class="pc-hardware-space" aria-hidden="true">
+            <div class="pc-hardware-orbit"></div>
+            <div class="pc-hardware">
+              <div class="pc-board-trace pc-trace-a"></div><div class="pc-board-trace pc-trace-b"></div>
+              <div class="pc-chip"><span>H100</span><small>80 GB</small></div>
+              <i class="pc-board-node pc-node-a"></i><i class="pc-board-node pc-node-b"></i><i class="pc-board-node pc-node-c"></i>
+            </div>
+            <span class="pc-hardware-caption">GPU COMPUTE / H100 SXM</span>
+          </div>
+        </div>
+
+        <div class="pc-stage pc-policy" id="pc-stage-policy" role="tabpanel" aria-labelledby="pc-tab-policy" data-pc-panel="2" tabindex="0" hidden>
+          <div class="pc-policy-copy"><h3><span class="pc-procurement-title">Agent-led procurement</span> within your budget, region and SLA.</h3><p>Your mandate. The agent’s boundaries.</p><button type="button" class="pc-next" data-pc-next="3">Explore public supply <span aria-hidden="true">↗</span></button></div>
+          <div class="pc-policy-flow" role="img" aria-label="An AI agent checks Budget, Region and SLA before routing to approved supply.">
+            <svg class="pc-flow-lines" viewBox="0 0 600 320" preserveAspectRatio="none" aria-hidden="true">
+              <g class="pc-flow-tracks"><path d="M90 160H145Q161 160 161 144V89Q161 73 177 73H216"/><path d="M90 160H216"/><path d="M90 160H145Q161 160 161 176V231Q161 247 177 247H216"/><path d="M384 73H426Q442 73 442 89V144Q442 160 458 160H506"/><path d="M384 160H506"/><path d="M384 247H426Q442 247 442 231V176Q442 160 458 160H506"/></g>
+              <g class="pc-flow-signals"><path class="pc-signal-a" d="M90 160H145Q161 160 161 144V89Q161 73 177 73H216"/><path class="pc-signal-b" d="M90 160H216"/><path class="pc-signal-c" d="M90 160H145Q161 160 161 176V231Q161 247 177 247H216"/><path class="pc-signal-out" d="M384 73H426Q442 73 442 89V144Q442 160 458 160H506"/><path class="pc-signal-out" d="M384 160H506"/><path class="pc-signal-out" d="M384 247H426Q442 247 442 231V176Q442 160 458 160H506"/></g>
+            </svg>
+            <div class="pc-agent-node" aria-hidden="true"><div class="pc-agent-core"><svg viewBox="0 0 40 40"><path d="m20 7 12 7v13l-12 7-12-7V14l12-7Z M8 14l12 7 12-7M20 21v13"/></svg></div><span>AI agent</span></div>
+            <div class="pc-policy-check pc-check-budget" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M10 2v16m4-12c0-4-8-4-8 0s8 3 8 7-8 4-8 0"/></svg><span>Budget</span><i></i></div>
+            <div class="pc-policy-check pc-check-region" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M16 8c0 4-6 10-6 10S4 12 4 8a6 6 0 1 1 12 0Z"/><circle cx="10" cy="8" r="2"/></svg><span>Region</span><i></i></div>
+            <div class="pc-policy-check pc-check-sla" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m10 2 6 2v5c0 5-6 9-6 9S4 14 4 9V4l6-2Z"/><path d="M7 8h6M7 11h4"/></svg><span>SLA</span><i></i></div>
+            <div class="pc-approved-node" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M8 7h24v8H8zm0 13h24v8H8zM12 11h1m3 0h1m-5 13h1m3 0h1M20 28v6m-7 0h14"/></svg><span>Approved<br>supply</span></div>
+          </div>
+        </div>
+
+        <div class="pc-stage pc-supply" id="pc-stage-supply" role="tabpanel" aria-labelledby="pc-tab-supply" data-pc-panel="3" tabindex="0" hidden>
+          <div class="pc-supply-intro"><h3>From PPA to AI-native Bloomberg <span class="pc-supply-ending">for compute.</span></h3></div>
+          <div class="pc-provider-grid">
+            <article class="pc-provider" aria-labelledby="pc-region-india">
+              <div class="pc-provider-top"><h4 id="pc-region-india">India</h4></div><p class="pc-provider-model">H100 SXM <span>80 GB</span></p><div class="pc-rate"><strong>$3.49</strong><span>USD / GPU-hr</span></div><span class="pc-offer-type">AP-IN-1 · On-demand</span>
+            </article>
+            <article class="pc-provider" aria-labelledby="pc-region-finland">
+              <div class="pc-provider-top"><h4 id="pc-region-finland">Finland</h4></div><p class="pc-provider-model">H100 SXM5 <span>80 GB</span></p><div class="pc-rate"><strong>$3.81</strong><span>USD / GPU-hr</span></div><span class="pc-offer-type">Helsinki · On-demand</span>
+            </article>
+            <article class="pc-provider" aria-labelledby="pc-region-global">
+              <div class="pc-provider-top"><h4 id="pc-region-global">Global regions</h4></div><p class="pc-provider-model">H100 SXM <span>80 GB</span></p><div class="pc-rate"><strong>$4.29</strong><span>USD / GPU-hr</span></div><span class="pc-offer-type">Multi-region cloud · On-demand</span>
+            </article>
+          </div>
+          <p class="pc-price-note">Published rates. GPU options and availability vary by region.</p>
+        </div>
+      </div>
+
+      <div class="pc-scene-bottom"><div class="pc-progress" aria-hidden="true"><i></i><i></i><i></i></div></div>
+    </div>
+
+    <div class="pc-links pv-reveal"><a class="pc-primary-link" href="https://open-next.ai/" target="_blank" rel="noopener noreferrer">Explore OpenNEXT <span aria-hidden="true">↗</span></a><a class="pc-secondary-link" href="https://vishwalab.com/opennext-index-factory.html" target="_blank" rel="noopener noreferrer">View Agent-Vetted GPU Index <span aria-hidden="true">↗</span></a></div>
+  </div>
+</section>

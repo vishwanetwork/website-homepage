@@ -4,6 +4,6 @@ services:
       context: .
     platform: linux/amd64
     container_name: website-homepage
-    image: vishwanetwork/website-homepage:latest
+    image: vishwanetwork/website-homepage:20261007
     ports:
       - "8090:80"
